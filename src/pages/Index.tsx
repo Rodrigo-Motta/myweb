@@ -6,26 +6,26 @@ import BlogPreview from '../components/BlogPreview';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-serif">
       <Navigation />
       <Hero />
       <WorkPreview />
       <BlogPreview />
       
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-gray-400 mb-4">
+      <footer className="py-16 px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="font-serif text-gray-500 mb-6">
             © 2024 Your Name. All rights reserved.
           </p>
-          <div className="flex justify-center space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+          <div className="flex justify-center space-x-8">
+            <a href="#" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
               LinkedIn
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="#" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
               GitHub
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">
+            <a href="#" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
               Twitter
             </a>
           </div>
