@@ -9,7 +9,7 @@ const Hero = () => {
           className="w-48 h-48 mx-auto rounded-full mb-8 object-cover"
         />
         <h1 className="font-serif text-5xl md:text-7xl text-gray-900 mb-8 leading-tight">
-          Your Name
+          Rodrigo da Motta Cabral-Carvalho
         </h1>
         <p className="font-serif text-xl md:text-2xl text-gray-600 mb-12 leading-relaxed">
           Designer, Developer & Creative Thinker
