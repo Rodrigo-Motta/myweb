@@ -4,7 +4,11 @@ const Hero = () => {
     <section className="pt-32 pb-24 px-8">
       <div className="max-w-3xl mx-auto text-center">
         <img
+<<<<<<< codex/add-photo-to-main-page
+          src="/placeholder.svg"
+=======
           src="/eu.png"
+>>>>>>> main
           alt="Portrait"
           className="w-48 h-48 mx-auto rounded-full mb-8 object-cover"
         />
