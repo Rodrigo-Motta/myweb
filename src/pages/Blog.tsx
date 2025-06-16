@@ -1,59 +1,46 @@
 
-import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
 const Blog = () => {
   const posts = [
     {
       id: 1,
-      title: "The Future of Web Development",
-      excerpt: "Exploring emerging trends and technologies that will shape how we build for the web in the coming years. From AI integration to new frameworks.",
-      content: "Full content would go here...",
-      date: "2024-01-15",
-      readTime: "5 min read",
-      tags: ["Web Dev", "Technology", "Trends"],
-      featured: true
+      title:
+        'Using Pre-Trained Transformers for Semantic Analysis of Self-Report measures in Psychology: A tutorial',
+      excerpt:
+        'In our recently published paper we reviewed self-report scales for subjective time and evaluated their semantic similarities using transformer models.',
+      date: '2024-05-01',
+      readTime: '6 min read',
+      tags: ['AI', 'LLMs', 'Psychology'],
+      url:
+        'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
+      featured: true,
     },
     {
       id: 2,
-      title: "Design Systems That Scale",
-      excerpt: "How to build and maintain design systems that grow with your product and team. Best practices from real-world experience.",
-      content: "Full content would go here...",
-      date: "2024-01-10",
-      readTime: "8 min read",
-      tags: ["Design", "Systems", "Scalability"],
-      featured: false
+      title: 'How I Organized a One-week University Course on Deep Learning',
+      excerpt:
+        'Organizing a 20-hour course at USP taught me how to break down the massive field of data science into digestible topics.',
+      date: '2024-03-08',
+      readTime: '8 min read',
+      tags: ['AI', 'Education', 'Courses'],
+      url:
+        'https://medium.com/towards-artificial-intelligence/how-i-organized-a-one-week-university-course-on-deep-learning-3bf99432f31c',
+      featured: false,
     },
     {
       id: 3,
-      title: "My Journey into Tech",
-      excerpt: "Reflections on my path from beginner to professional developer and the lessons learned along the way.",
-      content: "Full content would go here...",
-      date: "2024-01-05",
-      readTime: "6 min read",
-      tags: ["Personal", "Career", "Learning"],
-      featured: false
+      title:
+        'The Power of Independent Component Analysis (ICA) on Real-World Applications — EEG Example',
+      excerpt:
+        'Independent component analysis (ICA) is a powerful tool for separating linear contributions in real-world data like EEG.',
+      date: '2024-02-15',
+      readTime: '5 min read',
+      tags: ['Data Science', 'Neuroscience'],
+      url:
+        'https://medium.com/data-science/the-power-of-independent-component-analysis-ica-on-real-world-applications-egg-example-48df336a1bd8',
+      featured: false,
     },
-    {
-      id: 4,
-      title: "Building Accessible Web Apps",
-      excerpt: "Why accessibility matters and practical steps to make your applications inclusive for all users.",
-      content: "Full content would go here...",
-      date: "2024-01-01",
-      readTime: "7 min read",
-      tags: ["Accessibility", "Web Dev", "UX"],
-      featured: false
-    },
-    {
-      id: 5,
-      title: "State Management in React",
-      excerpt: "A comprehensive guide to different state management solutions in React and when to use each one.",
-      content: "Full content would go here...",
-      date: "2023-12-28",
-      readTime: "10 min read",
-      tags: ["React", "State Management", "Frontend"],
-      featured: false
-    }
   ];
 
   const featuredPost = posts.find(post => post.featured);
@@ -84,14 +71,19 @@ const Blog = () => {
                   </span>
                 </div>
                 
-                <Link to={`/blog/${featuredPost.id}`} className="block group">
+                <a
+                  href={featuredPost.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group"
+                >
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {featuredPost.title}
                   </h2>
                   <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                     {featuredPost.excerpt}
                   </p>
-                </Link>
+                </a>
                 
                 <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
                   <time>
@@ -131,14 +123,19 @@ const Blog = () => {
                   <span className="text-sm text-gray-500">{post.readTime}</span>
                 </div>
                 
-                <Link to={`/blog/${post.id}`} className="block group">
+                <a
+                  href={post.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block group"
+                >
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {post.title}
                   </h2>
                   <p className="text-gray-600 mb-6 leading-relaxed text-lg">
                     {post.excerpt}
                   </p>
-                </Link>
+                </a>
                 
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
