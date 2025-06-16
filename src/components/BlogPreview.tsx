@@ -5,22 +5,33 @@ const BlogPreview = () => {
   const posts = [
     {
       id: 1,
-      title: "The Future of Web Development",
-      excerpt: "Exploring emerging trends and technologies that will shape how we build for the web in the coming years.",
-      date: "2024-01-15",
+      title:
+        'Using Pre-Trained Transformers for Semantic Analysis of Self-Report measures in Psychology: A tutorial',
+      excerpt:
+        'Reviewing self-report scales for subjective time using the Sentence-T5 transformer and clustering techniques.',
+      date: '2024-05-01',
+      url:
+        'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
     },
     {
       id: 2,
-      title: "Design Systems That Scale",
-      excerpt: "How to build and maintain design systems that grow with your product and team.",
-      date: "2024-01-10",
+      title: 'How I Organized a One-week University Course on Deep Learning',
+      excerpt:
+        'Insights from organizing a 20-hour deep learning course at USP and covering the main topics successfully.',
+      date: '2024-03-08',
+      url:
+        'https://medium.com/towards-artificial-intelligence/how-i-organized-a-one-week-university-course-on-deep-learning-3bf99432f31c',
     },
     {
       id: 3,
-      title: "My Journey into Tech",
-      excerpt: "Reflections on my path from beginner to professional developer and the lessons learned along the way.",
-      date: "2024-01-05",
-    }
+      title:
+        'The Power of Independent Component Analysis (ICA) on Real-World Applications — EEG Example',
+      excerpt:
+        'A look at ICA as a data-driven approach for separating linear contributions in EEG data.',
+      date: '2024-02-15',
+      url:
+        'https://medium.com/data-science/the-power-of-independent-component-analysis-ica-on-real-world-applications-egg-example-48df336a1bd8',
+    },
   ];
 
   return (
@@ -41,14 +52,19 @@ const BlogPreview = () => {
                 })}
               </time>
               
-              <Link to={`/blog/${post.id}`} className="block group">
+              <a
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
                 <h3 className="font-serif text-2xl text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
                   {post.title}
                 </h3>
                 <p className="font-serif text-gray-600 leading-relaxed">
                   {post.excerpt}
                 </p>
-              </Link>
+              </a>
             </article>
           ))}
         </div>
