@@ -15,7 +15,7 @@ const Navigation = () => {
       <div className="max-w-4xl mx-auto px-8 py-6">
         <div className="flex justify-between items-center">
           <Link to="/" className="font-serif text-xl text-gray-900 hover:text-gray-600 transition-colors">
-            Your Name
+            Rodrigo da Motta Cabral-Carvalho
           </Link>
           
           <div className="flex space-x-8">
