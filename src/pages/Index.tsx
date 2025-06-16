@@ -3,7 +3,6 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import WorkPreview from '../components/WorkPreview';
 import BlogPreview from '../components/BlogPreview';
-import Publications from '../components/Publications';
 
 const Index = () => {
   return (
@@ -12,7 +11,6 @@ const Index = () => {
       <Hero />
       <WorkPreview />
       <BlogPreview />
-      <Publications />
       
       {/* Footer */}
       <footer className="py-16 px-8">
