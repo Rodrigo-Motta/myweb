@@ -85,7 +85,7 @@ export function useOEmbedThumbnail(url: string) {
         else if (data.type === 'photo' && typeof data.url === 'string') thumb = data.url
         else if (data.image && typeof data.image.url === 'string') thumb = data.image.url
         setThumbnail(thumb)
-      } catch (err: any) {
+      } catch (err: unknown) {
         if (!controller.signal.aborted) {
           setError(err instanceof Error ? err : new Error(String(err)))
           setThumbnail(null)
