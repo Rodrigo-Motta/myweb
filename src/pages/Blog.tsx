@@ -12,6 +12,7 @@ const Blog = () => {
       date: '2024-05-01',
       readTime: '6 min read',
       tags: ['AI', 'LLMs', 'Psychology'],
+      image: '/placeholder.svg',
       url:
         'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
       featured: true,
@@ -24,6 +25,7 @@ const Blog = () => {
       date: '2024-03-08',
       readTime: '8 min read',
       tags: ['AI', 'Education', 'Courses'],
+      image: '/placeholder.svg',
       url:
         'https://medium.com/towards-artificial-intelligence/how-i-organized-a-one-week-university-course-on-deep-learning-3bf99432f31c',
       featured: false,
@@ -37,8 +39,23 @@ const Blog = () => {
       date: '2024-02-15',
       readTime: '5 min read',
       tags: ['Data Science', 'Neuroscience'],
+      image: '/placeholder.svg',
       url:
         'https://medium.com/data-science/the-power-of-independent-component-analysis-ica-on-real-world-applications-egg-example-48df336a1bd8',
+      featured: false,
+    },
+    {
+      id: 4,
+      title:
+        'The Emerging Spirituality of Artificial Intelligence? From Kurzweil to Claude, Language Quietus and Psychedelic Reports',
+      excerpt:
+        "CW's researcher-in-residence discuss \u201cemergent spirituality\u201d on AI models, as well as the ethical implications for development and alignment",
+      date: '2025-06-05',
+      readTime: '7 min read',
+      tags: ['AI', 'Science', 'Futurism'],
+      image: '/placeholder.svg',
+      url:
+        'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
       featured: false,
     },
   ];
@@ -77,6 +94,21 @@ const Blog = () => {
                   rel="noopener noreferrer"
                   className="block group"
                 >
+                  {featuredPost.image ? (
+                    <img
+                      src={featuredPost.image}
+                      alt={featuredPost.title}
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (target.src !== '/placeholder.svg') target.src = '/placeholder.svg';
+                      }}
+                      className="w-full h-64 object-cover rounded mb-6"
+                    />
+                  ) : (
+                    <div className="w-full h-64 bg-gray-100 rounded mb-6 flex items-center justify-center text-gray-500">
+                      No image
+                    </div>
+                  )}
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {featuredPost.title}
                   </h2>
@@ -129,6 +161,21 @@ const Blog = () => {
                   rel="noopener noreferrer"
                   className="block group"
                 >
+                  {post.image ? (
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (target.src !== '/placeholder.svg') target.src = '/placeholder.svg';
+                      }}
+                      className="w-full h-48 object-cover rounded mb-4"
+                    />
+                  ) : (
+                    <div className="w-full h-48 bg-gray-100 rounded mb-4 flex items-center justify-center text-gray-500">
+                      No image
+                    </div>
+                  )}
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {post.title}
                   </h2>

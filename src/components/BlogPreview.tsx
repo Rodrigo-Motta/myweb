@@ -10,6 +10,7 @@ const BlogPreview = () => {
       excerpt:
         'Reviewing self-report scales for subjective time using the Sentence-T5 transformer and clustering techniques.',
       date: '2024-05-01',
+      image: '/placeholder.svg',
       url:
         'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
     },
@@ -19,6 +20,7 @@ const BlogPreview = () => {
       excerpt:
         'Insights from organizing a 20-hour deep learning course at USP and covering the main topics successfully.',
       date: '2024-03-08',
+      image: '/placeholder.svg',
       url:
         'https://medium.com/towards-artificial-intelligence/how-i-organized-a-one-week-university-course-on-deep-learning-3bf99432f31c',
     },
@@ -29,8 +31,20 @@ const BlogPreview = () => {
       excerpt:
         'A look at ICA as a data-driven approach for separating linear contributions in EEG data.',
       date: '2024-02-15',
+      image: '/placeholder.svg',
       url:
         'https://medium.com/data-science/the-power-of-independent-component-analysis-ica-on-real-world-applications-egg-example-48df336a1bd8',
+    },
+    {
+      id: 4,
+      title:
+        'The Emerging Spirituality of Artificial Intelligence? From Kurzweil to Claude, Language Quietus and Psychedelic Reports',
+      excerpt:
+        "CW's researcher-in-residence discuss \u201cemergent spirituality\u201d on AI models, as well as the ethical implications for development and alignment",
+      date: '2025-06-05',
+      image: '/placeholder.svg',
+      url:
+        'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
     },
   ];
 
@@ -58,6 +72,21 @@ const BlogPreview = () => {
                 rel="noopener noreferrer"
                 className="block group"
               >
+                {post.image ? (
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (target.src !== '/placeholder.svg') target.src = '/placeholder.svg';
+                    }}
+                    className="w-full h-48 object-cover rounded mb-4"
+                  />
+                ) : (
+                  <div className="w-full h-48 bg-gray-100 rounded mb-4 flex items-center justify-center text-gray-500">
+                    No image
+                  </div>
+                )}
                 <h3 className="font-serif text-2xl text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
                   {post.title}
                 </h3>
