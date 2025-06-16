@@ -110,8 +110,32 @@ export const OEmbedThumbnail: React.FC<{
   const { thumbnail, loading, error } = useOEmbedThumbnail(url)
 
   if (loading) return <Skeleton className={className} style={style} />
-  if (error || !thumbnail) return null
-  return <img src={thumbnail} alt={alt} className={className} style={style} />
+  if (error || !thumbnail) {
+    return (
+      <img
+        src="/placeholder.svg"
+        alt={alt}
+        className={className}
+        style={style}
+        onError={(e) => {
+          const target = e.currentTarget
+          if (target.src !== '/placeholder.svg') target.src = '/placeholder.svg'
+        }}
+      />
+    )
+  }
+  return (
+    <img
+      src={thumbnail}
+      alt={alt}
+      className={className}
+      style={style}
+      onError={(e) => {
+        const target = e.currentTarget
+        if (target.src !== '/placeholder.svg') target.src = '/placeholder.svg'
+      }}
+    />
+  )
 }
 
 /* DEMO
