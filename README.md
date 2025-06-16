@@ -64,6 +64,12 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/1176b3bd-b42c-4f3a-a609-ed0b81c91f87) and click on Share -> Publish.
 
+### GitHub Pages
+
+1. Enable GitHub Pages in your repository settings.
+2. The included workflow `.github/workflows/deploy.yml` builds the project and publishes the `dist` folder to the `gh-pages` environment on every push to `main`.
+3. The build uses the repository name for the base path automatically. No manual edits are required.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
