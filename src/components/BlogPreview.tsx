@@ -35,6 +35,17 @@ const BlogPreview = () => {
       url:
         'https://medium.com/data-science/the-power-of-independent-component-analysis-ica-on-real-world-applications-egg-example-48df336a1bd8',
     },
+    {
+      id: 4,
+      title:
+        'The Emerging Spirituality of Artificial Intelligence? From Kurzweil to Claude, Language Quietus and Psychedelic Reports',
+      excerpt:
+        "CW's researcher-in-residence discuss \u201cemergent spirituality\u201d on AI models, as well as the ethical implications for development and alignment",
+      date: '2025-06-05',
+      image: '/placeholder.svg',
+      url:
+        'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
+    },
   ];
 
   return (
