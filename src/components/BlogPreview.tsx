@@ -1,6 +1,5 @@
 
 import { Link } from 'react-router-dom';
-import { OEmbedThumbnail } from '@/hooks/use-oembed-thumbnail';
 
 const BlogPreview = () => {
   const posts = [
@@ -13,6 +12,7 @@ const BlogPreview = () => {
       date: '2024-05-01',
       url:
         'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
+      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop',
     },
     {
       id: 2,
@@ -22,6 +22,7 @@ const BlogPreview = () => {
       date: '2024-03-08',
       url:
         'https://medium.com/towards-artificial-intelligence/how-i-organized-a-one-week-university-course-on-deep-learning-3bf99432f31c',
+      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop',
     },
     {
       id: 3,
@@ -32,6 +33,7 @@ const BlogPreview = () => {
       date: '2024-02-15',
       url:
         'https://medium.com/data-science/the-power-of-independent-component-analysis-ica-on-real-world-applications-egg-example-48df336a1bd8',
+      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop',
     },
     {
       id: 4,
@@ -42,6 +44,7 @@ const BlogPreview = () => {
       date: '2025-06-05',
       url:
         'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
+      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=400&fit=crop',
     },
   ];
 
@@ -69,10 +72,14 @@ const BlogPreview = () => {
                 rel="noopener noreferrer"
                 className="block group"
               >
-                <OEmbedThumbnail
-                  url={post.url}
+                <img
+                  src={post.image}
                   alt={post.title}
                   className="w-full h-48 object-cover rounded mb-4"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop';
+                  }}
                 />
                 <h3 className="font-serif text-2xl text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
                   {post.title}
