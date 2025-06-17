@@ -1,5 +1,5 @@
-
 import Navigation from '../components/Navigation';
+import ConditionalImage from '../components/ConditionalImage';
 
 const Blog = () => {
   const posts = [
@@ -94,14 +94,10 @@ const Blog = () => {
                   rel="noopener noreferrer"
                   className="block group"
                 >
-                  <img
+                  <ConditionalImage
                     src={featuredPost.image}
                     alt={featuredPost.title}
                     className="w-full h-64 object-cover rounded mb-6"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop';
-                    }}
                   />
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {featuredPost.title}
@@ -155,14 +151,10 @@ const Blog = () => {
                   rel="noopener noreferrer"
                   className="block group"
                 >
-                  <img
+                  <ConditionalImage
                     src={post.image}
                     alt={post.title}
                     className="w-full h-48 object-cover rounded mb-4"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop';
-                    }}
                   />
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {post.title}

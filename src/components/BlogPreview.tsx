@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import ConditionalImage from './ConditionalImage';
 
 const BlogPreview = () => {
   const posts = [
@@ -40,7 +41,7 @@ const BlogPreview = () => {
       title:
         'The Emerging Spirituality of Artificial Intelligence? From Kurzweil to Claude, Language Quietus and Psychedelic Reports',
       excerpt:
-        "CW's researcher-in-residence discuss \u201cemergent spirituality\u201d on AI models, as well as the ethical implications for development and alignment",
+        "CW's researcher-in-residence discuss "emergent spirituality" on AI models, as well as the ethical implications for development and alignment",
       date: '2025-06-05',
       url:
         'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
@@ -72,14 +73,10 @@ const BlogPreview = () => {
                 rel="noopener noreferrer"
                 className="block group"
               >
-                <img
+                <ConditionalImage
                   src={post.image}
                   alt={post.title}
                   className="w-full h-48 object-cover rounded mb-4"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.src = 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop';
-                  }}
                 />
                 <h3 className="font-serif text-2xl text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
                   {post.title}

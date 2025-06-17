@@ -2,11 +2,19 @@
 import { useParams, Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 
+interface BlogPost {
+  title: string;
+  date: string;
+  readTime: string;
+  tags: string[];
+  content: string;
+}
+
 const BlogPost = () => {
   const { id } = useParams();
   
   // There are no local blog posts since all articles live on external platforms
-  const posts: Record<string, never> = {};
+  const posts: Record<string, BlogPost> = {};
 
   const post = posts[id as keyof typeof posts];
 
