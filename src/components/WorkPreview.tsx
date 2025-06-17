@@ -5,21 +5,24 @@ const WorkPreview = () => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A modern e-commerce solution with React and Node.js",
-      tags: ["React", "Node.js", "MongoDB"]
+      title: "Investigating Subjective Experience with LLMs",
+      description:
+        "How does our introspection translate to language? Particularly, can we understand language as positions in a rich semantic space?",
+      tags: ["AI", "LLM", "Cognition"]
     },
     {
       id: 2,
-      title: "Mobile App Design",
-      description: "UI/UX design for a fitness tracking mobile application",
-      tags: ["UI/UX", "Figma", "Mobile"]
+      title: "Complex System Approach to Neural Dynamics",
+      description:
+        "Somehow we manage to create the conscious experience from a result of interacting components: neurons, neurotransmitters, glia, and environment. I'm continuing to fail in solving these questions, but I'm persistent as many from the field.",
+      tags: ["Neuroscience", "Complex Systems"]
     },
     {
       id: 3,
-      title: "Data Visualization",
-      description: "Interactive dashboard for business analytics",
-      tags: ["D3.js", "React", "Analytics"]
+      title: "Querying the Psychedelic Experience",
+      description:
+        "To better understand the mind we may alter it. Psychedelics might be an incredible opportunity for the exploration of the cognitive, social and emotional systems. But maybe not only for humans—but also in machines.",
+      tags: ["Psychedelics", "Research"]
     }
   ];
 
