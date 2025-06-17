@@ -56,17 +56,15 @@ const Hero = () => {
           <div>
             <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
               <p>
-                Welcome to my digital space where I share my work, thoughts, and creative journey. 
-                I'm passionate about creating meaningful experiences through design and code.
+                I see myself as a Data Scientist specializing in AI and Cognition, with practical
+                experience in business applications and consulting. Alongside this, I'm a writer and
+                content creator driven by a passion for communicating and sparking curiosity about
+                Data Science, Artificial Intelligence, Physics, and Neuroscience. Community building
+                and interdisciplinarity is central to my approach.
               </p>
+              <p>I deeply value diversity, collaboration, and respect.</p>
               <p>
-                I specialize in the intersection of technology and human experience, with particular 
-                interests in neuroscience, artificial intelligence, and creative applications of 
-                data science.
-              </p>
-              <p>
-                My work spans from academic research in brain dynamics and consciousness studies 
-                to practical applications in machine learning and web development.
+                And remember: creativity thrives when we occasionally increase our entropy!
               </p>
             </div>
           </div>
