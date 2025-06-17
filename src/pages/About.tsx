@@ -24,6 +24,13 @@ const About = () => {
               to practical applications in machine learning and web development.
             </p>
           </div>
+          <div className="mt-12 flex justify-center">
+            <img
+              src="/timeline.png"
+              alt="Timeline of my experience"
+              className="max-w-full h-auto"
+            />
+          </div>
         </div>
       </main>
     </div>
