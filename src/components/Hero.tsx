@@ -54,7 +54,6 @@ const Hero = () => {
 
           {/* Right side - About Me */}
           <div>
-            <h2 className="font-serif text-2xl text-gray-900 mb-6">About Me</h2>
             <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
               <p>
                 Welcome to my digital space where I share my work, thoughts, and creative journey. 

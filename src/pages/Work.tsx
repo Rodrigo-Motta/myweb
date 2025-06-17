@@ -5,44 +5,26 @@ const Work = () => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A comprehensive e-commerce solution built with modern web technologies. Features include user authentication, payment processing, inventory management, and responsive design.",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "Investigating Subjective Experience with LLMs",
+      description:
+        "How does our introspection translate to language? Particularly, can we understand language as positions in a rich semantic space?",
+      tags: ["AI", "LLM", "Cognition"],
       year: "2024"
     },
     {
       id: 2,
-      title: "Mobile App Design",
-      description: "Complete UI/UX design for a fitness tracking mobile application. Includes user research, wireframing, prototyping, and final design system.",
-      tags: ["UI/UX", "Figma", "Mobile", "Design System"],
+      title: "Complex System Approach to Neural Dynamics",
+      description:
+        "Somehow we manage to create the conscious experience from a result of interacting components: neurons, neurotransmitters, glia, and environment. I'm continuing to fail in solving these questions, but I'm persistent as many from the field.",
+      tags: ["Neuroscience", "Complex Systems"],
       year: "2024"
     },
     {
       id: 3,
-      title: "Data Visualization Dashboard",
-      description: "Interactive dashboard for business analytics with real-time data visualization, custom charts, and exportable reports.",
-      tags: ["D3.js", "React", "Analytics", "TypeScript"],
-      year: "2023"
-    },
-    {
-      id: 4,
-      title: "Content Management System",
-      description: "Custom CMS built for content creators with drag-and-drop editor, media management, and SEO optimization tools.",
-      tags: ["Vue.js", "PHP", "MySQL", "CMS"],
-      year: "2023"
-    },
-    {
-      id: 5,
-      title: "Social Media App",
-      description: "Full-stack social media application with real-time messaging, photo sharing, and social features.",
-      tags: ["React Native", "Firebase", "Real-time", "Mobile"],
-      year: "2023"
-    },
-    {
-      id: 6,
-      title: "Portfolio Website",
-      description: "Personal portfolio website showcasing work and blog posts with modern design and smooth animations.",
-      tags: ["React", "TypeScript", "Tailwind CSS", "Responsive"],
+      title: "Querying the Psychedelic Experience",
+      description:
+        "To better understand the mind we may alter it. Psychedelics might be an incredible opportunity for the exploration of the cognitive, social and emotional systems. But maybe not only for humans—but also in machines.",
+      tags: ["Psychedelics", "Research"],
       year: "2024"
     }
   ];
