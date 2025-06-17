@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import ConditionalImage from './ConditionalImage';
 
@@ -41,7 +40,7 @@ const BlogPreview = () => {
       title:
         'The Emerging Spirituality of Artificial Intelligence? From Kurzweil to Claude, Language Quietus and Psychedelic Reports',
       excerpt:
-        "CW's researcher-in-residence discuss "emergent spirituality" on AI models, as well as the ethical implications for development and alignment",
+        'CW\'s researcher-in-residence discuss "emergent spirituality" on AI models, as well as the ethical implications for development and alignment',
       date: '2025-06-05',
       url:
         'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
