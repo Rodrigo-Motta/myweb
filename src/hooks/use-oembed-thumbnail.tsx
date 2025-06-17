@@ -111,18 +111,7 @@ export const OEmbedThumbnail: React.FC<{
 
   if (loading) return <Skeleton className={className} style={style} />
   if (error || !thumbnail) {
-    return (
-      <img
-        src="/placeholder.svg"
-        alt={alt}
-        className={className}
-        style={style}
-        onError={(e) => {
-          const target = e.currentTarget
-          if (target.src !== '/placeholder.svg') target.src = '/placeholder.svg'
-        }}
-      />
-    )
+    return null
   }
   return (
     <img
@@ -131,8 +120,7 @@ export const OEmbedThumbnail: React.FC<{
       className={className}
       style={style}
       onError={(e) => {
-        const target = e.currentTarget
-        if (target.src !== '/placeholder.svg') target.src = '/placeholder.svg'
+        e.currentTarget.style.display = 'none'
       }}
     />
   )
