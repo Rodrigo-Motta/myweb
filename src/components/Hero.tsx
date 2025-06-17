@@ -1,5 +1,5 @@
 
-import { Github, Linkedin, Medium } from 'lucide-react';
+import { Github, Linkedin, BookOpen } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -13,10 +13,10 @@ const Hero = () => {
               alt="Portrait"
               className="w-32 h-32 mx-auto md:mx-0 rounded-full mb-6 object-cover"
             />
-            <h1 className="font-serif text-3xl md:text-4xl text-gray-900 mb-6 leading-tight">
+            <h1 className="font-serif text-2xl md:text-3xl text-gray-900 mb-6 leading-tight">
               Rodrigo da Motta Cabral-Carvalho
             </h1>
-            <p className="font-serif text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="font-serif text-lg text-gray-600 mb-8 leading-relaxed">
               Designer, Developer & Creative Thinker
             </p>
             
@@ -47,7 +47,7 @@ const Hero = () => {
                 className="flex items-center justify-center w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
                 aria-label="Medium"
               >
-                <Medium size={20} className="text-gray-700" />
+                <BookOpen size={20} className="text-gray-700" />
               </a>
             </div>
           </div>
