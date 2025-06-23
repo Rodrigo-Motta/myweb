@@ -1,16 +1,14 @@
 import Navigation from '../components/Navigation';
-import Link from 'next/link';
 
 const Work = () => {
   const projects = [
-    {
+      {
       id: 1,
       title: "Improving machines by cognition",
       description:
         "Is it possible to better understand complex machines using the human cognition framework? Can we develop better AI by incorporating such theories?",
       tags: ["AI", "LLM", "Cognition"],
-      year: "2025-ongoing",
-      links: []
+      year: "2025-ongoing"
     },
     {
       id: 2,
@@ -18,10 +16,7 @@ const Work = () => {
       description:
         "How does our introspection translate to language? Particularly, can we understand language as positions in a rich semantic space?",
       tags: ["AI", "LLM", "Cognition"],
-      year: "2024-ongoing",
-      links: [
-        "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=jaaS6acAAAAJ&citation_for_view=jaaS6acAAAAJ:9yKSN-GCB0IC"
-      ]
+      year: "2024-ongoing"
     },
     {
       id: 3,
@@ -29,22 +24,15 @@ const Work = () => {
       description:
         "To better understand the mind we may alter it. Psychedelics might be an incredible opportunity for the exploration of the cognitive, social and emotional systems. But maybe not only for humans—but also in machines.",
       tags: ["Psychedelics", "Research"],
-      year: "2024-ongoing",
-      links: [
-        "https://www.biorxiv.org/content/10.1101/2025.04.25.650509v1"
-      ]
+      year: "2024-ongoing"
     },
     {
       id: 4,
-      title: "Complex System Approach to the Brain Functioning",
+      title: "Complex System Approach to the Brain functioning",
       description:
         "Somehow we manage to create the conscious experience from a result of interacting components: neurons, neurotransmitters, glia, and environment. I'm continuing to fail in solving these questions, but I'm persistent as many from the field.",
       tags: ["Neuroscience", "Complex Systems"],
-      year: "2024",
-      links: [
-        "https://www.biorxiv.org/content/10.1101/2025.04.25.650509v1",
-        "https://direct.mit.edu/netn/article/doi/10.1162/netn_a_00451/128325/A-graph-neural-network-approach-to-investigate"
-      ]
+      year: "2024"
     }
   ];
 
@@ -83,22 +71,6 @@ const Work = () => {
                     </span>
                   ))}
                 </div>
-
-                {project.links.length > 0 && (
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    {project.links.map((url, idx) => (
-                      <Link href={url} passHref key={idx}>
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-                        >
-                          View Paper{project.links.length > 1 ? ` (${idx + 1})` : ''}
-                        </a>
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
           </div>
