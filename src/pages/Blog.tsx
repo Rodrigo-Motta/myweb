@@ -167,7 +167,7 @@ const Blog = () => {
               Blog
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Thoughts, insights, and stories about design, development, and the creative process.
+              Where a personal projects, Data Science, Cognition, Neuroscience, AI, Physics, Education, and some entropy meet.
             </p>
           </div>
 
