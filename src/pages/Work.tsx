@@ -35,7 +35,7 @@ const Work = () => {
       description:
         "Somehow we manage to create the conscious experience from a result of interacting components: neurons, neurotransmitters, glia, and environment. I'm continuing to fail in solving these questions, but I'm persistent as many from the field.",
       tags: ['Neuroscience', 'Complex Systems'],
-      year: '2024',
+      year: '2024-ongoing',
       links: [
         'https://direct.mit.edu/netn/article/doi/10.1162/netn_a_00451/128325',
         'https://www.biorxiv.org/content/10.1101/2025.04.25.650509.abstract',
