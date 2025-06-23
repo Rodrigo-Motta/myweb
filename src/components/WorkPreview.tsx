@@ -3,27 +3,22 @@ import { Link } from 'react-router-dom';
 
 const WorkPreview = () => {
   const projects = [
-    {
+      {
       id: 1,
-      title: "Investigating Subjective Experience with LLMs",
+      title: "Improving machines by cognition",
       description:
-        "How does our introspection translate to language? Particularly, can we understand language as positions in a rich semantic space?",
-      tags: ["AI", "LLM", "Cognition"]
+        "Is it possible to better understand complex machines using the human cognition framework? Can we develop better AI by incorporating such theories?",
+      tags: ["AI", "LLM", "Cognition"],
+      year: "2025-ongoing"
     },
     {
-      id: 2,
-      title: "Complex System Approach to Neural Dynamics",
+      id: 4,
+      title: "Complex System Approach to the Brain functioning",
       description:
         "Somehow we manage to create the conscious experience from a result of interacting components: neurons, neurotransmitters, glia, and environment. I'm continuing to fail in solving these questions, but I'm persistent as many from the field.",
-      tags: ["Neuroscience", "Complex Systems"]
+      tags: ["Neuroscience", "Complex Systems"],
+      year: "2024"
     },
-    {
-      id: 3,
-      title: "Querying the Psychedelic Experience",
-      description:
-        "To better understand the mind we may alter it. Psychedelics might be an incredible opportunity for the exploration of the cognitive, social and emotional systems. But maybe not only for humans—but also in machines.",
-      tags: ["Psychedelics", "Research"]
-    }
   ];
 
   return (

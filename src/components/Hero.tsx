@@ -17,7 +17,7 @@ const Hero = () => {
               Rodrigo da Motta Cabral-Carvalho
             </h1>
             <p className="font-serif text-lg text-gray-600 mb-8 leading-relaxed">
-              Designer, Developer & Creative Thinker
+              Data Scientist, Researcher & Thinker
             </p>
             
             {/* Social Media Buttons */}
