@@ -6,41 +6,41 @@ const BlogPreview = () => {
     {
       id: 1,
       title:
-        'Using Pre-Trained Transformers for Semantic Analysis of Self-Report measures in Psychology: A tutorial',
-      excerpt:
-        'Reviewing self-report scales for subjective time using the Sentence-T5 transformer and clustering techniques.',
-      date: '2024-05-01',
-      url:
-        'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
-    },
-    {
-      id: 2,
-      title: 'How I Organized a One-week University Course on Deep Learning',
-      excerpt:
-        'Insights from organizing a 20-hour deep learning course at USP and covering the main topics successfully.',
-      date: '2024-03-08',
-      url:
-        'https://medium.com/towards-artificial-intelligence/how-i-organized-a-one-week-university-course-on-deep-learning-3bf99432f31c',
-    },
-    {
-      id: 3,
-      title:
-        'The Power of Independent Component Analysis (ICA) on Real-World Applications — EEG Example',
-      excerpt:
-        'A look at ICA as a data-driven approach for separating linear contributions in EEG data.',
-      date: '2024-02-15',
-      url:
-        'https://medium.com/data-science/the-power-of-independent-component-analysis-ica-on-real-world-applications-egg-example-48df336a1bd8',
-    },
-    {
-      id: 4,
-      title:
         'The Emerging Spirituality of Artificial Intelligence? From Kurzweil to Claude, Language Quietus and Psychedelic Reports',
       excerpt:
         'CW\'s researcher-in-residence discuss "emergent spirituality" on AI models, as well as the ethical implications for development and alignment',
       date: '2025-06-05',
       url:
         'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
+    },
+    {
+      id: 2,
+      title:
+        'A ciência de dados dos dados de dados do Nerdcast de RPG: O dado é realmente justo?',
+      excerpt:
+        'Usando episódios de Ghanor para investigar se os dados do podcast Nerdcast são justos.',
+      date: '2025-05-08',
+      url:
+        'https://medium.com/@rodrigodamottacc/a-ci%C3%AAncia-de-dados-dos-dados-de-dados-do-nerdcast-de-rpg-o-dado-%C3%A9-realmente-justo-d41e8e0eaeb3',
+    },
+    {
+      id: 3,
+      title: 'Simulating Vibrations: The Advanced Physics Behind Drums and Speakers',
+      excerpt:
+        'Exploring the 2D Wave Equation through simulations and by hearing them.',
+      date: '2024-06-05',
+      url:
+        'https://medium.com/@rodrigodamottacc/simulating-vibrations-the-advanced-physics-behind-drums-and-speakers-b350f6fb1362',
+    },
+    {
+      id: 4,
+      title:
+        'Using Pre-Trained Transformers for Semantic Analysis of Self-Report measures in Psychology: A tutorial',
+      excerpt:
+        'Reviewing self-report scales for subjective time using the Sentence-T5 transformer and clustering techniques.',
+      date: '2024-05-01',
+      url:
+        'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
     },
   ];
 
