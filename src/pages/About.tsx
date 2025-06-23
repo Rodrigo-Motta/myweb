@@ -54,7 +54,7 @@ const About = () => {
             <img
               src="/community.png"
               alt="Community engagement"
-              className="max-w-full h-auto"
+              className="w-1/2 max-w-xs h-auto"
             />
           </div>
         </div>
