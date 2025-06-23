@@ -9,6 +9,7 @@ const About = () => {
           <h1 className="font-serif text-5xl md:text-6xl text-gray-900 mb-8">
             About Me
           </h1>
+
           <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
             <p>
               Welcome to my digital space where I share my work, thoughts, and creative journey.
@@ -24,38 +25,40 @@ const About = () => {
               to practical applications in machine learning and web development.
             </p>
           </div>
+
           <div className="mt-12 flex justify-center">
             <img
               src="/timeline.png"
               alt="Timeline of my experience"
               className="max-w-full h-auto"
-             />
+            />
           </div>
-          <div className="mt-8 space-y-4 font-serif text-gray-600 leading-relaxed">
-            <p className="font-bold text-gray-900">Committed to Community Building:</p>
-            <p>
-              I founded the Tech & Innovation Community in the Institute of Physics, where I
-              host seminars for students and researchers to discuss new technologies, recent
-              papers and emerging ideas.
-            </p>
-            <p>
-              These meetings offer practical exposure to tools in data science, machine
-              learning and computational physics, encouraging interdisciplinary
-              collaboration.
-            </p>
-            <p>
-              Teaching data science can be daunting. In a 20-hour Deep Learning course I
-              organized at USP – Universidade de São Paulo, Latin America's leading
-              university, I broke down core concepts so participants could confidently
-              navigate this vast field.
-            </p>
-          </div>
-          <div className="mt-8 flex justify-center">
+
+          <div className="mt-12 flex flex-col md:flex-row items-center md:items-start gap-6">
             <img
               src="/community.png"
               alt="Community engagement"
-              className="w-1/2 max-w-xs h-auto"
+              className="w-2/5 max-w-sm h-auto"
             />
+            <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
+              <p className="font-bold text-gray-900">Committed to Community Building:</p>
+              <p>
+                I founded the Tech & Innovation Community in the Institute of Physics, where I
+                host seminars for students and researchers to discuss new technologies, recent
+                papers and emerging ideas.
+              </p>
+              <p>
+                These meetings offer practical exposure to tools in data science, machine
+                learning and computational physics, encouraging interdisciplinary
+                collaboration.
+              </p>
+              <p>
+                Teaching data science can be daunting. In a 20-hour Deep Learning course I
+                organized at USP – Universidade de São Paulo, Latin America's leading
+                university, I broke down core concepts so participants could confidently
+                navigate this vast field.
+              </p>
+            </div>
           </div>
         </div>
       </main>
