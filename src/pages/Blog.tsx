@@ -1,5 +1,5 @@
+
 import Navigation from '../components/Navigation';
-import { OEmbedThumbnail } from '../hooks/use-oembed-thumbnail';
 
 const Blog = () => {
   const posts = [
@@ -187,11 +187,6 @@ const Blog = () => {
                   rel="noopener noreferrer"
                   className="block group"
                 >
-                  <OEmbedThumbnail
-                    url={featuredPost.url}
-                    alt={featuredPost.title}
-                    className="w-full h-64 object-cover rounded mb-6"
-                  />
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {featuredPost.title}
                   </h2>
@@ -244,11 +239,6 @@ const Blog = () => {
                   rel="noopener noreferrer"
                   className="block group"
                 >
-                  <OEmbedThumbnail
-                    url={post.url}
-                    alt={post.title}
-                    className="w-full h-48 object-cover rounded mb-4"
-                  />
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {post.title}
                   </h2>
