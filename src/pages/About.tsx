@@ -35,31 +35,34 @@ const About = () => {
           </div>
 
           <div className="mt-12 flex flex-col md:flex-row items-center md:items-start gap-6">
-            <img
-              src="/community.png"
-              alt="Community engagement"
-              className="w-2/5 max-w-sm h-auto"
-            />
-            <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
-              <p className="font-bold text-gray-900">Committed to Community Building:</p>
-              <p>
-                I founded the Tech & Innovation Community in the Institute of Physics, where I
-                host seminars for students and researchers to discuss new technologies, recent
-                papers and emerging ideas.
-              </p>
-              <p>
-                These meetings offer practical exposure to tools in data science, machine
-                learning and computational physics, encouraging interdisciplinary
-                collaboration.
-              </p>
-              <p>
-                Teaching data science can be daunting. In a 20-hour Deep Learning course I
-                organized at USP – Universidade de São Paulo, Latin America's leading
-                university, I broke down core concepts so participants could confidently
-                navigate this vast field.
-              </p>
-            </div>
+          <img
+            src="/community.png"
+            alt="Community engagement"
+            className="w-2/5 max-w-sm h-auto"
+          />
+          <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
+            <p className="font-bold text-gray-900">Strong Commitment to Tech & Innovation Community Building:</p>
+            <p>
+              I have been deeply involved in building and nurturing the Tech & Innovation Community at the Institute of Physics. I led initiatives to create a space where students and researchers could regularly meet to explore new technologies, discuss recent scientific papers, and share emerging ideas.
+            </p>
+            <p>
+              To make cutting-edge knowledge accessible, I developed and taught an open-access Deep Learning course that is freely available online. The course breaks down core concepts in a clear and practical way for beginners and curious learners alike. You can watch the full series here:
+              {" "}
+              <a
+                href="https://www.youtube.com/watch?v=oWuDvjnGdvU&list=PLgK8OuJjPC4Pi5rn9LmCeQuuDVuzj_6TF"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline"
+              >
+                Deep Learning Course on YouTube
+              </a>.
+            </p>
+            <p>
+              These community-driven efforts promote interdisciplinary learning and empower people from diverse backgrounds to explore data science, machine learning, and computational thinking.
+            </p>
           </div>
+        </div>
+
         </div>
       </main>
     </div>
