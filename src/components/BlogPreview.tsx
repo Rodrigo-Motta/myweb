@@ -1,5 +1,5 @@
+
 import { Link } from 'react-router-dom';
-import { OEmbedThumbnail } from '../hooks/use-oembed-thumbnail';
 
 const BlogPreview = () => {
   const posts = [
@@ -68,11 +68,6 @@ const BlogPreview = () => {
                 rel="noopener noreferrer"
                 className="block group"
               >
-                <OEmbedThumbnail
-                  url={post.url}
-                  alt={post.title}
-                  className="w-full h-48 object-cover rounded mb-4"
-                />
                 <h3 className="font-serif text-2xl text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
                   {post.title}
                 </h3>
