@@ -29,6 +29,32 @@ const About = () => {
               src="/timeline.png"
               alt="Timeline of my experience"
               className="max-w-full h-auto"
+             />
+          </div>
+          <div className="mt-8 space-y-4 font-serif text-gray-600 leading-relaxed">
+            <p className="font-bold text-gray-900">Committed to Community Building:</p>
+            <p>
+              I founded the Tech & Innovation Community in the Institute of Physics, where I
+              host seminars for students and researchers to discuss new technologies, recent
+              papers and emerging ideas.
+            </p>
+            <p>
+              These meetings offer practical exposure to tools in data science, machine
+              learning and computational physics, encouraging interdisciplinary
+              collaboration.
+            </p>
+            <p>
+              Teaching data science can be daunting. In a 20-hour Deep Learning course I
+              organized at USP – Universidade de São Paulo, Latin America's leading
+              university, I broke down core concepts so participants could confidently
+              navigate this vast field.
+            </p>
+          </div>
+          <div className="mt-8 flex justify-center">
+            <img
+              src="/community.png"
+              alt="Community engagement"
+              className="max-w-full h-auto"
             />
           </div>
         </div>
