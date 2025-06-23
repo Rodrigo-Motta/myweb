@@ -9,22 +9,23 @@ const About = () => {
           <h1 className="font-serif text-5xl md:text-6xl text-gray-900 mb-8">
             About Me
           </h1>
-
           <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
             <p>
               Welcome to my digital space where I share my work, thoughts, and creative journey.
-              I'm passionate about creating meaningful experiences through design and code.
+              Here you can find a brief timeline and some pieces of information about me.
             </p>
             <p>
-              I specialize in the intersection of technology and human experience, with particular
-              interests in neuroscience, artificial intelligence, and creative applications of
-              data science.
+              When I figured out that astrophysics was not quite for me, I was absolutely captivated by the world of complex systems, computers, data, and probability. From that moment on, my mind became absorbed by challenging questions: how can intelligence emerge from simple rules? Can we model consciousness? How do networks and algorithms shape our understanding of reality?
             </p>
             <p>
-              My work spans from academic research in brain dynamics and consciousness studies
-              to practical applications in machine learning and web development.
+              I specialize in the intersection of technology and human experience, with particular interests in neuroscience, artificial intelligence, and creative applications of data science.
+            </p>
+            <p>
+              My work spans from academic research in brain and mind studies
+              to more practical applications of data science in industry.
             </p>
           </div>
+
 
           <div className="mt-12 flex justify-center">
             <img
@@ -41,12 +42,12 @@ const About = () => {
             className="w-2/5 max-w-sm h-auto"
           />
           <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
-            <p className="font-bold text-gray-900">Strong Commitment to Tech & Innovation Community Building:</p>
+            <p className="font-bold text-gray-900">Tech & Innovation Community Building:</p>
             <p>
               I have been deeply involved in building and nurturing the Tech & Innovation Community at the Institute of Physics. I led initiatives to create a space where students and researchers could regularly meet to explore new technologies, discuss recent scientific papers, and share emerging ideas.
             </p>
             <p>
-              To make cutting-edge knowledge accessible, I developed and taught an open-access Deep Learning course that is freely available online. The course breaks down core concepts in a clear and practical way for beginners and curious learners alike. You can watch the full series here:
+              To make cutting-edge knowledge accessible, I developed and taught an open-access Deep Learning course that is freely available online. The course breaks down core concepts in a clear and practical way for beginners and curious learners. You can watch the full series here:
               {" "}
               <a
                 href="https://www.youtube.com/watch?v=oWuDvjnGdvU&list=PLgK8OuJjPC4Pi5rn9LmCeQuuDVuzj_6TF"
