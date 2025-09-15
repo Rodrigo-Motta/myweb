@@ -1,4 +1,5 @@
 import Navigation from '../components/Navigation';
+import { withBasePath } from '../utils/assetPath';
 
 const About = () => {
   return (
@@ -29,7 +30,7 @@ const About = () => {
 
           <div className="mt-12 flex justify-center">
             <img
-              src="/timeline.png"
+              src={withBasePath('timeline.png')}
               alt="Timeline of my experience"
               className="max-w-full h-auto"
             />
@@ -37,7 +38,7 @@ const About = () => {
 
           <div className="mt-12 flex flex-col md:flex-row items-center md:items-start gap-6">
           <img
-            src="/community.png"
+            src={withBasePath('community.png')}
             alt="Community engagement"
             className="w-2/5 max-w-sm h-auto"
           />

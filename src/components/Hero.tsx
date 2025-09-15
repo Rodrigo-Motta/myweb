@@ -1,5 +1,6 @@
 
 import { Github, Linkedin, BookOpen } from 'lucide-react';
+import { withBasePath } from '../utils/assetPath';
 
 const Hero = () => {
   return (
@@ -9,7 +10,7 @@ const Hero = () => {
           {/* Left side - Image and Name */}
           <div className="text-center md:text-left">
             <img
-              src="/eu.png"
+              src={withBasePath('eu.png')}
               alt="Portrait"
               className="w-32 h-32 mx-auto md:mx-0 rounded-full mb-6 object-cover"
             />
