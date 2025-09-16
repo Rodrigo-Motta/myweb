@@ -17,8 +17,11 @@ const Hero = () => {
             <h1 className="font-serif text-2xl md:text-3xl text-gray-900 mb-6 leading-tight">
               Rodrigo da Motta Cabral-Carvalho
             </h1>
-            <p className="font-serif text-lg text-gray-600 mb-8 leading-relaxed">
-              Data Scientist & Researcher
+            <p className="font-serif text-lg text-gray-600 leading-relaxed">
+              Research Scientist & Data Scientist
+            </p>
+            <p className="font-serif text-base text-gray-500 mb-8 leading-relaxed">
+              M.Sc. in Neuroscience and Cognition - UFABC & King's College London | B.Sc. in Physics - University of São Paulo
             </p>
             
             {/* Social Media Buttons */}
