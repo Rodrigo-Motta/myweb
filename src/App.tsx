@@ -10,12 +10,13 @@ import Conferences from "./pages/Conferences";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import { getRouterBasename } from "./utils/routerBase";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter basename={getRouterBasename()}>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/work" element={<Work />} />
