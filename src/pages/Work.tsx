@@ -16,6 +16,23 @@ const Work = () => {
     },
   ];
 
+  const presentations = [
+    'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)',
+    'Poster at OHBM 2024 (Seoul, South Korea)',
+    'Poster at Brain Modes 2024 (Bilbao, Spain)',
+  ];
+
+  const invitedTalks = [
+    'Yonsei University, South Korea (Prof. Byung-Hoon Kim)',
+    'Imperial College London (Dr. Pedro Mediano)',
+    'University of Oxford (Prof. Rui Costa & NeuroAI group)',
+    'University of Zurich (Prof. Susanne Wegener & Prof. Nicolas Langer)',
+  ];
+
+  const awards = [
+    'Best Work Presentation, 10th BRAINN Congress 2024 (UNICAMP, Brazil)',
+  ];
+
   const projects = [
     {
       id: 1,
@@ -63,54 +80,109 @@ const Work = () => {
       <Navigation />
 
       <main className="pt-32 pb-24 px-8">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h1 className="font-serif text-5xl md:text-6xl text-gray-900 mb-8">Work</h1>
           <p className="font-serif text-xl text-gray-600 mb-24 max-w-2xl">
             A collection of projects that demonstrate my skills in design, development, and problem-solving.
           </p>
 
-          <section className="mb-20">
-            <h2 className="font-serif text-3xl text-gray-900 mb-6">Scholarships & Funding</h2>
-            <p className="font-serif text-gray-600 leading-relaxed mb-4">
-              Awarded prestigious research scholarships in AI and Neuroscience:
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {scholarships.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-serif text-sm text-blue-600 underline"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </section>
+          <div className="grid gap-12 md:grid-cols-2 mb-20">
+            <section>
+              <h2 className="font-serif text-3xl text-gray-900 mb-6">Scholarships & Funding</h2>
+              <p className="font-serif text-gray-600 leading-relaxed mb-4">
+                Awarded prestigious research scholarships in AI and Neuroscience:
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {scholarships.map((item) => (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-serif text-sm text-blue-600 underline"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            </section>
 
-          <div className="space-y-20">
+            <section>
+              <h2 className="font-serif text-3xl text-gray-900 mb-6">Conferences, Talks, Awards</h2>
+              <div className="space-y-6">
+                <div>
+                  <h3 className="font-serif text-lg text-gray-800 mb-2">Presentations</h3>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    {presentations.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-serif text-lg text-gray-800 mb-2">Invited Talks (on site)</h3>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    {invitedTalks.map((item) => (
+                      <li key={item}>
+                        {item.includes('NeuroAI group') ? (
+                          <span>
+                            University of Oxford (Prof. Rui Costa &
+                            {' '}
+                            <a
+                              href="https://neuralml.github.io"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 underline"
+                            >
+                              NeuroAI group
+                            </a>
+                            )
+                          </span>
+                        ) : (
+                          item
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-serif text-lg text-gray-800 mb-2">Awards</h3>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    {awards.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <section>
+            <h2 className="font-serif text-3xl text-gray-900 mb-10">Key Projects</h2>
+            <div className="grid gap-12 md:grid-cols-2">
             {projects.map((project) => (
-              <div key={project.id} className="border-b border-gray-200 pb-16 last:border-b-0">
-                <div className="flex justify-between items-start mb-6">
-                  <h2 className="font-serif text-3xl text-gray-900">{project.title}</h2>
-                  <span className="font-serif text-gray-500">{project.year}</span>
+              <article
+                key={project.id}
+                className="rounded-lg border border-gray-200 p-8 shadow-sm transition-transform hover:-translate-y-1"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="font-serif text-2xl text-gray-900">{project.title}</h3>
+                  <span className="font-serif text-sm text-gray-500">{project.year}</span>
                 </div>
 
-                <p className="font-serif text-gray-600 leading-relaxed mb-8 max-w-3xl">
+                <p className="font-serif text-gray-600 leading-relaxed mb-6">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-4 mb-4">
+                <div className="flex flex-wrap gap-3 mb-4">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="font-serif text-sm text-gray-500">
+                    <span key={tag} className="font-serif text-xs uppercase tracking-wide text-gray-500">
                       {tag}
                     </span>
                   ))}
                 </div>
 
                 {project.links && project.links.length > 0 && (
-                  <div className="flex flex-col gap-2 mt-2">
+                  <div className="flex flex-col gap-2">
                     {project.links.map((href, idx) => (
                       <a
                         key={idx}
@@ -124,9 +196,10 @@ const Work = () => {
                     ))}
                   </div>
                 )}
-              </div>
+              </article>
             ))}
-          </div>
+            </div>
+          </section>
         </div>
       </main>
     </div>
