@@ -66,9 +66,9 @@ Simply open [Lovable](https://lovable.dev/projects/1176b3bd-b42c-4f3a-a609-ed0b8
 
 ### GitHub Pages
 
-1. Enable GitHub Pages in your repository settings.
-2. The included workflow `.github/workflows/deploy.yml` builds the project and publishes the `dist` folder to the `gh-pages` environment on every push to `main`.
-3. The build uses the repository name for the base path automatically. No manual edits are required.
+1. In **Settings → Pages**, set the source to **GitHub Actions**.
+2. Push to `main` (or trigger the workflow manually) and the workflow at `.github/workflows/deploy.yml` will build the site with Vite and upload the `dist/` output.
+3. The deploy job publishes that artifact to GitHub Pages automatically, so the site stays in sync with the latest `main` branch.
 
 ## Can I connect a custom domain to my Lovable project?
 
