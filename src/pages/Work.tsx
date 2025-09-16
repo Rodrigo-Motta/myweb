@@ -1,6 +1,21 @@
 import Navigation from '../components/Navigation';
 
 const Work = () => {
+  const scholarships = [
+    {
+      label: 'Undergraduate',
+      href: 'https://bv.fapesp.br/en/bolsas/197807/statistical-considerations-about-the-brain-rest-state-hemodynamics-with-functional-near-infrared-spe/',
+    },
+    {
+      label: "Master's",
+      href: 'https://bv.fapesp.br/en/bolsas/211915/use-of-graph-convolutional-neural-networks-in-fmri-data-for-characterization-of-psychiatric-disorder/',
+    },
+    {
+      label: 'Research Internship Abroad',
+      href: 'https://bv.fapesp.br/en/bolsas/215745/improving-the-characterization-of-psychiatric-disorders-with-spatio-temporal-graph-convolution-neura/',
+    },
+  ];
+
   const projects = [
     {
       id: 1,
@@ -53,6 +68,26 @@ const Work = () => {
           <p className="font-serif text-xl text-gray-600 mb-24 max-w-2xl">
             A collection of projects that demonstrate my skills in design, development, and problem-solving.
           </p>
+
+          <section className="mb-20">
+            <h2 className="font-serif text-3xl text-gray-900 mb-6">Scholarships & Funding</h2>
+            <p className="font-serif text-gray-600 leading-relaxed mb-4">
+              Awarded prestigious research scholarships in AI and Neuroscience:
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {scholarships.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-serif text-sm text-blue-600 underline"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </section>
 
           <div className="space-y-20">
             {projects.map((project) => (
