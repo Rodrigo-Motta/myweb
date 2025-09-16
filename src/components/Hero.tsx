@@ -20,8 +20,11 @@ const Hero = () => {
             <p className="font-serif text-lg text-gray-600 leading-relaxed">
               Research Scientist & Data Scientist
             </p>
+            <p className="font-serif text-base text-gray-500 leading-relaxed">
+              M.Sc. in Neuroscience and Cognition - UFABC & King's College London
+            </p>
             <p className="font-serif text-base text-gray-500 mb-8 leading-relaxed">
-              M.Sc. in Neuroscience and Cognition - UFABC & King's College London | B.Sc. in Physics - University of São Paulo
+              B.Sc. in Physics - University of São Paulo
             </p>
             
             {/* Social Media Buttons */}
