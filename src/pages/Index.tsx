@@ -1,4 +1,3 @@
-
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import WorkPreview from '../components/WorkPreview';
@@ -13,8 +12,8 @@ const Index = () => {
       <Hero />
       <WorkPreview />
       <PublicationPreview />
-      <ConferencesPreview />
       <BlogPreview />
+      <ConferencesPreview />
       
       {/* Footer */}
       <footer className="py-16 px-8">

@@ -1,79 +1,60 @@
-# Welcome to your Lovable project
+# Website — React + Vite + TypeScript
 
-## Project info
+Modern React web app powered by Vite, TypeScript, Tailwind CSS, and shadcn/ui.
 
-**URL**: https://lovable.dev/projects/1176b3bd-b42c-4f3a-a609-ed0b81c91f87
+## Tech Stack
 
-## How can I edit this code?
+- Vite
+- React 18
+- TypeScript
+- Tailwind CSS
+- shadcn/ui (Radix UI primitives)
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+Prerequisites:
+- Node.js 18+ and npm. Install via nvm: https://github.com/nvm-sh/nvm
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1176b3bd-b42c-4f3a-a609-ed0b81c91f87) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+Install and run:
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Useful scripts:
+- `npm run dev` – start Vite dev server
+- `npm run build` – production build to `dist/`
+- `npm run preview` – preview the production build
+- `npm run lint` – run ESLint
+- `npm run server` – optional link-preview API (Express) at `/api/link-preview`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Notes:
+- During development, a lightweight `/api/link-preview` route is provided by a Vite plugin.
+- In production, host `server/` separately if you need server-side link previews.
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1176b3bd-b42c-4f3a-a609-ed0b81c91f87) and click on Share -> Publish.
+## Deployment
 
 ### GitHub Pages
+This repo includes a GitHub Actions workflow at `.github/workflows/deploy.yml` that builds and publishes the site to GitHub Pages.
 
-1. In **Settings → Pages**, set the source to **GitHub Actions**.
-2. Push to `main` (or trigger the workflow manually) and the workflow at `.github/workflows/deploy.yml` will build the site with Vite and upload the `dist/` output.
-3. The deploy job publishes that artifact to GitHub Pages automatically, so the site stays in sync with the latest `main` branch.
+1. In repository Settings → Pages, set Source to GitHub Actions.
+2. Push to `main` (or trigger the workflow manually). The workflow builds the app and publishes `dist/` to Pages.
 
-## Can I connect a custom domain to my Lovable project?
+Base path:
+- The workflow sets `VITE_BASE=./` so assets resolve correctly when the site is served from a subpath.
+- You can also control this by setting `process.env.VITE_BASE` or editing `base` in `vite.config.ts`.
 
-Yes, you can!
+### Other Hosts
+Any static host works. Build with `npm run build` and upload the `dist/` directory to your host (e.g., Netlify, Vercel, Cloudflare Pages, S3+CloudFront).
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Custom Domain (optional)
+- For GitHub Pages, configure the custom domain under Settings → Pages. Optionally add a `public/CNAME` file with your domain to keep it versioned.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Project Structure (high level)
+- `src/` – application code (components, pages, utils)
+- `public/` – static assets copied as-is
+- `server/` – optional Express server for link previews
+- `vite.config.ts` – Vite configuration
+
+## License
+No license specified.
