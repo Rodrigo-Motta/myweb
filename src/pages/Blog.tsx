@@ -1,4 +1,5 @@
 import Navigation from '../components/Navigation';
+import { useEffect, useState } from 'react';
 
 const FALLBACK_PLACEHOLDER =
   'data:image/svg+xml,' +
@@ -31,6 +32,7 @@ const buildThumbnail = (url: string) => {
 };
 
 const Blog = () => {
+  const [ogMap, setOgMap] = useState<Record<string, string | null>>({});
   const rawPosts = [
     {
       id: 13,
@@ -202,6 +204,37 @@ const Blog = () => {
   const featuredPost = posts.find(post => post.featured);
   const regularPosts = posts.filter(post => !post.featured);
 
+  // Fetch Open Graph images for each post URL once
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const entries = await Promise.all(
+          rawPosts.map(async (p) => {
+            try {
+              const r = await fetch(`/api/link-preview?url=${encodeURIComponent(p.url)}`);
+              if (!r.ok) throw new Error(String(r.status));
+              const data = await r.json();
+              return [p.url, (data?.image as string | null) || null] as const;
+            } catch {
+              return [p.url, null] as const;
+            }
+          })
+        );
+        if (!cancelled) {
+          const next: Record<string, string | null> = {};
+          for (const [u, img] of entries) next[u] = img;
+          setOgMap(next);
+        }
+      } catch {
+        // ignore
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -216,6 +249,8 @@ const Blog = () => {
               Where a personal projects, Data Science, Cognition, Neuroscience, AI, Physics, Education, and some entropy meet.
             </p>
           </div>
+
+          
 
           {/* Featured Post */}
           {featuredPost && (
@@ -235,7 +270,7 @@ const Blog = () => {
                 >
                   <div className="overflow-hidden rounded-md mb-3 aspect-[16/6]">
                     <img
-                      src={featuredPost.primary}
+                      src={ogMap[featuredPost.url] || featuredPost.primary}
                       alt={`Thumbnail for ${featuredPost.title}`}
                       className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
@@ -292,7 +327,7 @@ const Blog = () => {
                     className="block md:w-60 overflow-hidden rounded-xl flex-shrink-0"
                   >
                     <img
-                      src={post.primary}
+                      src={ogMap[post.url] || post.primary}
                       alt={`Thumbnail for ${post.title}`}
                       className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                       loading="lazy"

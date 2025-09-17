@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const FALLBACK_PLACEHOLDER =
   'data:image/svg+xml,' +
@@ -31,6 +32,7 @@ const buildThumbnail = (url: string) => {
 };
 
 const BlogPreview = () => {
+  const [ogMap, setOgMap] = useState<Record<string, string | null>>({});
   const posts = [
     {
       id: 13,
@@ -97,6 +99,39 @@ const BlogPreview = () => {
     },
   ];
 
+  // Fetch Open Graph images for each post URL once
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const entries = await Promise.all(
+          posts.map(async (p) => {
+            try {
+              const rawBase = (import.meta as any)?.env?.VITE_PREVIEW_API_BASE as string | undefined;
+              const apiBase = rawBase ? rawBase.replace(/\/$/, '') : '';
+              const r = await fetch(`${apiBase}/api/link-preview?url=${encodeURIComponent(p.url)}`);
+              if (!r.ok) throw new Error(String(r.status));
+              const data = await r.json();
+              return [p.url, (data?.image as string | null) || null] as const;
+            } catch {
+              return [p.url, null] as const;
+            }
+          })
+        );
+        if (!cancelled) {
+          const next: Record<string, string | null> = {};
+          for (const [u, img] of entries) next[u] = img;
+          setOgMap(next);
+        }
+      } catch {
+        // ignore network errors
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <section className="py-12 px-6 md:px-8 bg-gray-50">
       <div className="max-w-5xl mx-auto">
@@ -113,7 +148,7 @@ const BlogPreview = () => {
               <a href={post.url} target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
-                    src={post.primary}
+                    src={ogMap[post.url] || post.primary}
                     alt={`Thumbnail for ${post.title}`}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
