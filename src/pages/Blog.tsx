@@ -212,7 +212,9 @@ const Blog = () => {
         const entries = await Promise.all(
           rawPosts.map(async (p) => {
             try {
-              const r = await fetch(`/api/link-preview?url=${encodeURIComponent(p.url)}`);
+              const rawBase = (import.meta as any)?.env?.VITE_PREVIEW_API_BASE as string | undefined;
+              const apiBase = rawBase ? rawBase.replace(/\/$/, '') : '';
+              const r = await fetch(`${apiBase}/api/link-preview?url=${encodeURIComponent(p.url)}`);
               if (!r.ok) throw new Error(String(r.status));
               const data = await r.json();
               return [p.url, (data?.image as string | null) || null] as const;
