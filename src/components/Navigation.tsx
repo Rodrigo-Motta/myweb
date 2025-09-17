@@ -1,14 +1,13 @@
-
 import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const location = useLocation();
   
   const navItems = [
+    { name: 'Blog', path: '/blog' },
     { name: 'Work', path: '/work' },
     { name: 'Publication', path: '/publication' },
     { name: 'Conferences & Talks', path: '/conferences' },
-    { name: 'Blog', path: '/blog' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];

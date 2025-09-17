@@ -7,7 +7,7 @@ const Publication = () => {
       title:
         'A graph neural network approach to investigate brain critical states over neurodevelopment',
       authors:
-        'Rodrigo M. Cabral-Carvalho, Walter H. L. Pinaya, João R. Sato',
+        'R. Cabral-Carvalho, Walter H. L. Pinaya, João R. Sato',
       journal: 'Network Neuroscience 2025',
       doi: 'https://doi.org/10.1162/netn_a_00451',
     },
@@ -16,7 +16,7 @@ const Publication = () => {
       title:
         'Ayahuasca Shifts Brain Dynamics Toward Higher Entropy: Persistent Elevation of Ising Temperature Correlates with Acute Subjective Effects',
       authors:
-        'Rodrigo M. Cabral-Carvalho, Fernanda Palhano-Fontes, Draulio B. Araujo, João R. Sato',
+        'R. Cabral-Carvalho, Fernanda Palhano-Fontes, Draulio B. Araujo, João R. Sato',
       journal: 'bioRxiv 2025.04.25.650509',
       doi: 'https://doi.org/10.1101/2025.04.25.650509',
     },
@@ -50,7 +50,7 @@ const Publication = () => {
                 <h2 className="font-serif text-2xl text-gray-900 mb-2">
                   {item.title}
                 </h2>
-                <p className="font-serif text-gray-600 text-sm mb-1">{item.authors}</p>
+                <p className="font-serif text-gray-600 text-sm mb-1" dangerouslySetInnerHTML={{ __html: item.authors.replace(/Cabral-Carvalho/g, '<b style="color:#111">Cabral-Carvalho</b>') }} />
                 <p className="font-serif text-gray-500 text-sm mb-3">{item.journal}</p>
                 <a
                   href={item.doi}
