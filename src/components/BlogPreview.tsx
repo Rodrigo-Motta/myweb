@@ -1,6 +1,9 @@
 
 import { Link } from 'react-router-dom';
 
+const blogThumbnail = (url: string) =>
+  `https://v1.screenshot.11ty.dev/${encodeURIComponent(url)}/opengraph/`;
+
 const BlogPreview = () => {
   const posts = [
     {
@@ -12,6 +15,9 @@ const BlogPreview = () => {
       date: '2025-06-05',
       url:
         'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
+      thumbnail: blogThumbnail(
+        'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
+      ),
     },
     {
       id: 2,
@@ -22,6 +28,9 @@ const BlogPreview = () => {
       date: '2025-05-08',
       url:
         'https://medium.com/@rodrigodamottacc/a-ci%C3%AAncia-de-dados-dos-dados-de-dados-do-nerdcast-de-rpg-o-dado-%C3%A9-realmente-justo-d41e8e0eaeb3',
+      thumbnail: blogThumbnail(
+        'https://medium.com/@rodrigodamottacc/a-ci%C3%AAncia-de-dados-dos-dados-de-dados-do-nerdcast-de-rpg-o-dado-%C3%A9-realmente-justo-d41e8e0eaeb3',
+      ),
     },
     {
       id: 3,
@@ -31,6 +40,9 @@ const BlogPreview = () => {
       date: '2024-06-05',
       url:
         'https://medium.com/@rodrigodamottacc/simulating-vibrations-the-advanced-physics-behind-drums-and-speakers-b350f6fb1362',
+      thumbnail: blogThumbnail(
+        'https://medium.com/@rodrigodamottacc/simulating-vibrations-the-advanced-physics-behind-drums-and-speakers-b350f6fb1362',
+      ),
     },
     {
       id: 4,
@@ -41,39 +53,49 @@ const BlogPreview = () => {
       date: '2024-05-01',
       url:
         'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
+      thumbnail: blogThumbnail(
+        'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
+      ),
     },
   ];
 
   return (
-    <section className="py-24 px-8 bg-gray-50">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl text-gray-900 mb-16">
+    <section className="py-12 px-6 md:px-8 bg-gray-50">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="font-serif text-3xl md:text-4xl text-gray-900 mb-8">
           Recent Writing
         </h2>
 
-        <div className="space-y-12 mb-16">
+        <div className="grid gap-6 md:grid-cols-2 mb-8">
           {posts.map((post) => (
-            <article key={post.id} className="border-b border-gray-200 pb-8 last:border-b-0">
-              <time className="font-serif text-sm text-gray-500 mb-3 block">
-                {new Date(post.date).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}
-              </time>
-              
-              <a
-                href={post.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block group"
-              >
-                <h3 className="font-serif text-2xl text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
-                  {post.title}
-                </h3>
-                <p className="font-serif text-gray-600 leading-relaxed">
-                  {post.excerpt}
-                </p>
+            <article
+              key={post.id}
+              className="rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+            >
+              <a href={post.url} target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={post.thumbnail}
+                    alt={`Thumbnail for ${post.title}`}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5">
+                  <time className="font-serif text-xs text-gray-500 mb-2 block uppercase tracking-wide">
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    })}
+                  </time>
+                  <h3 className="font-serif text-xl text-gray-900 mb-2 group-hover:text-gray-600 transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="font-serif text-gray-600 leading-relaxed text-sm">
+                    {post.excerpt}
+                  </p>
+                </div>
               </a>
             </article>
           ))}

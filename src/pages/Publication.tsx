@@ -44,23 +44,23 @@ const Publication = () => {
             A selection of my recent academic work.
           </p>
 
-          <div className="space-y-20">
+          <div className="space-y-10">
             {items.map((item) => (
-              <div key={item.id} className="border-b border-gray-200 pb-12 last:border-b-0">
-                <h2 className="font-serif text-3xl text-gray-900 mb-4">
+              <article key={item.id} className="border-b border-gray-200 pb-6">
+                <h2 className="font-serif text-2xl text-gray-900 mb-2">
                   {item.title}
                 </h2>
-                <p className="font-serif text-gray-600 mb-2">{item.authors}</p>
-                <p className="font-serif text-gray-500 mb-6">{item.journal}</p>
+                <p className="font-serif text-gray-600 text-sm mb-1">{item.authors}</p>
+                <p className="font-serif text-gray-500 text-sm mb-3">{item.journal}</p>
                 <a
                   href={item.doi}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors"
+                  className="inline-block font-serif text-sm text-blue-600 underline"
                 >
                   View Article
                 </a>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -70,4 +70,3 @@ const Publication = () => {
 };
 
 export default Publication;
-

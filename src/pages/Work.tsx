@@ -14,23 +14,10 @@ const Work = () => {
       label: 'Research Internship Abroad',
       href: 'https://bv.fapesp.br/en/bolsas/215745/improving-the-characterization-of-psychiatric-disorders-with-spatio-temporal-graph-convolution-neura/',
     },
-  ];
-
-  const presentations = [
-    'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)',
-    'Poster at OHBM 2024 (Seoul, South Korea)',
-    'Poster at Brain Modes 2024 (Bilbao, Spain)',
-  ];
-
-  const invitedTalks = [
-    'Yonsei University, South Korea (Prof. Byung-Hoon Kim)',
-    'Imperial College London (Dr. Pedro Mediano)',
-    'University of Oxford (Prof. Rui Costa & NeuroAI group)',
-    'University of Zurich (Prof. Susanne Wegener & Prof. Nicolas Langer)',
-  ];
-
-  const awards = [
-    'Best Work Presentation, 10th BRAINN Congress 2024 (UNICAMP, Brazil)',
+    {
+      label: 'AI Research Residency',
+      href: 'https://www.cloudwalk.io/residency/ai/selected',
+    },
   ];
 
   const projects = [
@@ -63,10 +50,10 @@ const Work = () => {
     },
     {
       id: 4,
-      title: 'Complex System Approach to the Brain functioning',
+      title: 'Graph Neural Network (GNN) and Complex System Approach to the Brain Function',
       description:
         "Somehow we manage to create the conscious experience from a result of interacting components: neurons, neurotransmitters, glia, and environment. I'm continuing to fail in solving these questions, but I'm persistent as many from the field.",
-      tags: ['Neuroscience', 'Complex Systems'],
+      tags: ['Graph Neural Networks (GNNs)','Neuroscience', 'Complex Systems'],
       year: '2024-ongoing',
       links: [
         'https://direct.mit.edu/netn/article/doi/10.1162/netn_a_00451/128325',
@@ -80,86 +67,35 @@ const Work = () => {
       <Navigation />
 
       <main className="pt-32 pb-24 px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h1 className="font-serif text-5xl md:text-6xl text-gray-900 mb-8">Work</h1>
           <p className="font-serif text-xl text-gray-600 mb-24 max-w-2xl">
-            A collection of projects that demonstrate my skills in design, development, and problem-solving.
           </p>
 
-          <div className="grid gap-12 md:grid-cols-2 mb-20">
-            <section>
-              <h2 className="font-serif text-3xl text-gray-900 mb-6">Scholarships & Funding</h2>
-              <p className="font-serif text-gray-600 leading-relaxed mb-4">
-                Awarded prestigious research scholarships in AI and Neuroscience:
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {scholarships.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-serif text-sm text-blue-600 underline"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </section>
-
-            <section>
-              <h2 className="font-serif text-3xl text-gray-900 mb-6">Conferences, Talks, Awards</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="font-serif text-lg text-gray-800 mb-2">Presentations</h3>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    {presentations.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg text-gray-800 mb-2">Invited Talks (on site)</h3>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    {invitedTalks.map((item) => (
-                      <li key={item}>
-                        {item.includes('NeuroAI group') ? (
-                          <span>
-                            University of Oxford (Prof. Rui Costa &
-                            {' '}
-                            <a
-                              href="https://neuralml.github.io"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-600 underline"
-                            >
-                              NeuroAI group
-                            </a>
-                            )
-                          </span>
-                        ) : (
-                          item
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className="font-serif text-lg text-gray-800 mb-2">Awards</h3>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    {awards.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </section>
-          </div>
+          <section className="mb-20">
+            <h2 className="font-serif text-3xl text-gray-900 mb-6">Scholarships & Funding</h2>
+            <p className="font-serif text-gray-600 leading-relaxed mb-4">
+              Awarded prestigious research scholarships in AI and Neuroscience:
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {scholarships.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-serif text-sm text-blue-600 underline"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </section>
 
           <section>
             <h2 className="font-serif text-3xl text-gray-900 mb-10">Key Projects</h2>
             <div className="grid gap-12 md:grid-cols-2">
-            {projects.map((project) => (
+              {projects.map((project) => (
               <article
                 key={project.id}
                 className="rounded-lg border border-gray-200 p-8 shadow-sm transition-transform hover:-translate-y-1"

@@ -1,24 +1,24 @@
 
-import { Github, Linkedin, BookOpen } from 'lucide-react';
+import { Github, Linkedin, BookOpen, GraduationCap } from 'lucide-react';
 import { withBasePath } from '../utils/assetPath';
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-24 px-8">
+    <section className="pt-32 pb-12 px-6 md:px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-10 items-start">
           {/* Left side - Image and Name */}
           <div className="text-center md:text-left">
             <img
               src={withBasePath('eu.png')}
               alt="Portrait"
-              className="w-32 h-32 mx-auto md:mx-0 rounded-full mb-6 object-cover"
+              className="w-40 h-40 md:w-48 md:h-48 mx-auto md:mx-0 rounded-full mb-6 object-cover"
             />
             <h1 className="font-serif text-2xl md:text-3xl text-gray-900 mb-6 leading-tight">
               Rodrigo da Motta Cabral-Carvalho
             </h1>
             <p className="font-serif text-lg text-gray-600 leading-relaxed">
-              Research Scientist & Data Scientist
+              Research Scientist & Data Scientist @ CloudWalk, Inc.
             </p>
             <p className="font-serif text-base text-gray-500 leading-relaxed">
               M.Sc. in Neuroscience and Cognition - UFABC & King's College London
@@ -46,6 +46,15 @@ const Hero = () => {
                 aria-label="GitHub"
               >
                 <Github size={20} className="text-gray-700" />
+              </a>
+              <a
+                href="https://scholar.google.com/citations?user=jaaS6acAAAAJ&hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                aria-label="Google Scholar"
+              >
+                <GraduationCap size={20} className="text-gray-700" />
               </a>
               <a
                 href="https://medium.com/@rodrigodamottacc"

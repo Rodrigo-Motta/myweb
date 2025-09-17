@@ -1,6 +1,29 @@
 import Navigation from '../components/Navigation';
 import { conferenceAppearances } from '../lib/conferences';
 
+const conferencesPresentations = [
+  'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)',
+  'Poster at OHBM 2024 (Seoul, South Korea)',
+  'Poster at Brain Modes 2024 (Bilbao, Spain)',
+  'Poster at Brain Modes 2025 (Toronto, Canada)',
+];
+
+const conferencesInvitedTalks = [
+  { text: 'Yonsei University, South Korea (Prof. Byung-Hoon Kim)' },
+  { text: 'Imperial College London (Dr. Pedro Mediano)' },
+  {
+    prefix: 'University of Oxford (Prof. Rui Costa & ',
+    linkLabel: 'NeuroAI group',
+    linkHref: 'https://neuralml.github.io',
+    suffix: ')',
+  },
+  { text: 'University of Zurich (Prof. Susanne Wegener & Prof. Nicolas Langer)' },
+];
+
+const conferencesAwards = [
+  'Best Work Presentation, 10th BRAINN Congress 2024 (UNICAMP, Brazil)',
+];
+
 const Conferences = () => {
   return (
     <div className="min-h-screen bg-white font-serif">
@@ -14,6 +37,50 @@ const Conferences = () => {
             Highlights from keynotes, invited talks, and panels where I share insights on neuroscience,
             artificial intelligence, and community building.
           </p>
+
+          <section className="grid gap-12 md:grid-cols-2 mb-20">
+            <div>
+              <h2 className="font-serif text-3xl text-gray-900 mb-4">Presentations</h2>
+              <ul className="space-y-3 text-sm text-gray-600">
+                {conferencesPresentations.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="font-serif text-3xl text-gray-900 mb-4">Invited Talks (on site)</h2>
+              <ul className="space-y-3 text-sm text-gray-600">
+                {conferencesInvitedTalks.map((talk) => (
+                  <li key={talk.text ?? talk.prefix ?? talk.linkLabel}>
+                    {talk.text ? (
+                      talk.text
+                    ) : (
+                      <span>
+                        {talk.prefix}
+                        <a
+                          href={talk.linkHref}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline"
+                        >
+                          {talk.linkLabel}
+                        </a>
+                        {talk.suffix}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="md:col-span-2">
+              <h2 className="font-serif text-3xl text-gray-900 mb-4">Awards</h2>
+              <ul className="space-y-3 text-sm text-gray-600">
+                {conferencesAwards.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
 
           <div className="space-y-20">
             {conferenceAppearances.map((appearance) => (

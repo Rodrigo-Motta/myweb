@@ -24,20 +24,23 @@ const PublicationPreview = () => {
   ];
 
   return (
-    <section className="py-24 px-8 bg-gray-50">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl text-gray-900 mb-16">
+    <section className="py-12 px-6 md:px-8 bg-gray-50">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="font-serif text-3xl md:text-4xl text-gray-900 mb-8">
           Selected Publications
         </h2>
 
-        <div className="space-y-12 mb-16">
+        <div className="grid gap-6 md:grid-cols-2 mb-8">
           {selectedPublications.map((publication) => (
-            <article key={publication.id} className="border-b border-gray-200 pb-8 last:border-b-0">
-              <h3 className="font-serif text-2xl text-gray-900 mb-3">
+            <article
+              key={publication.id}
+              className="rounded-lg border border-gray-200 p-5 bg-white shadow-sm hover:shadow-md transition-shadow"
+            >
+              <h3 className="font-serif text-lg text-gray-900 mb-2">
                 {publication.title}
               </h3>
-              <p className="font-serif text-gray-600 mb-2">{publication.authors}</p>
-              <p className="font-serif text-gray-500 mb-4">{publication.journal}</p>
+              <p className="font-serif text-gray-600 mb-2 text-sm">{publication.authors}</p>
+              <p className="font-serif text-gray-500 mb-3 text-sm">{publication.journal}</p>
               <a
                 href={publication.doi}
                 target="_blank"
