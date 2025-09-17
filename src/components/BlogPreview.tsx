@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { fetchOgImage } from '@/utils/fetchOg';
 
 const FALLBACK_PLACEHOLDER =
   'data:image/svg+xml,' +
@@ -104,20 +105,7 @@ const BlogPreview = () => {
     let cancelled = false;
     (async () => {
       try {
-        const entries = await Promise.all(
-          posts.map(async (p) => {
-            try {
-              const rawBase = (import.meta as any)?.env?.VITE_PREVIEW_API_BASE as string | undefined;
-              const apiBase = rawBase ? rawBase.replace(/\/$/, '') : '';
-              const r = await fetch(`${apiBase}/api/link-preview?url=${encodeURIComponent(p.url)}`);
-              if (!r.ok) throw new Error(String(r.status));
-              const data = await r.json();
-              return [p.url, (data?.image as string | null) || null] as const;
-            } catch {
-              return [p.url, null] as const;
-            }
-          })
-        );
+        const entries = await Promise.all(posts.map(async (p) => [p.url, await fetchOgImage(p.url)] as const));
         if (!cancelled) {
           const next: Record<string, string | null> = {};
           for (const [u, img] of entries) next[u] = img;

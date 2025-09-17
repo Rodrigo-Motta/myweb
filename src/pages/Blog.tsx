@@ -1,5 +1,6 @@
 import Navigation from '../components/Navigation';
 import { useEffect, useState } from 'react';
+import { fetchOgImage } from '@/utils/fetchOg';
 
 const FALLBACK_PLACEHOLDER =
   'data:image/svg+xml,' +
@@ -210,18 +211,7 @@ const Blog = () => {
     (async () => {
       try {
         const entries = await Promise.all(
-          rawPosts.map(async (p) => {
-            try {
-              const rawBase = (import.meta as any)?.env?.VITE_PREVIEW_API_BASE as string | undefined;
-              const apiBase = rawBase ? rawBase.replace(/\/$/, '') : '';
-              const r = await fetch(`${apiBase}/api/link-preview?url=${encodeURIComponent(p.url)}`);
-              if (!r.ok) throw new Error(String(r.status));
-              const data = await r.json();
-              return [p.url, (data?.image as string | null) || null] as const;
-            } catch {
-              return [p.url, null] as const;
-            }
-          })
+          rawPosts.map(async (p) => [p.url, await fetchOgImage(p.url)] as const)
         );
         if (!cancelled) {
           const next: Record<string, string | null> = {};
