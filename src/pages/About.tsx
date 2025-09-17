@@ -48,7 +48,7 @@ const About = () => {
               I have been deeply involved in building and nurturing the Tech & Innovation Community at the Institute of Physics. I led initiatives to create a space where students and researchers could regularly meet to explore new technologies, discuss recent scientific papers, and share emerging ideas.
             </p>
             <p>
-              To make cutting-edge knowledge accessible, I developed and taught an open-access Deep Learning course that is freely available online. The course breaks down core concepts in a clear and practical way for beginners and curious learners. You can watch the full series here:
+              To make knowledge and inovation accessible, I developed and taught an open-access Deep Learning course that is freely available online. The course breaks down core concepts in a clear and practical way for beginners and curious learners. You can watch the full series here:
               {" "}
               <a
                 href="https://www.youtube.com/watch?v=oWuDvjnGdvU&list=PLgK8OuJjPC4Pi5rn9LmCeQuuDVuzj_6TF"

@@ -1,8 +1,49 @@
-
 import Navigation from '../components/Navigation';
 
+const FALLBACK_PLACEHOLDER =
+  'data:image/svg+xml,' +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f5f5f5" offset="0"/><stop stop-color="#e7e7e7" offset="1"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/><text x="200" y="160" fill="#9ca3af" font-family="serif" font-size="32" text-anchor="middle">No preview</text></svg>',
+  );
+
+const buildThumbnail = (url: string) => {
+  try {
+    const { hostname } = new URL(url);
+    const fallback = `https://logo.clearbit.com/${hostname}?size=800`;
+
+    if (hostname.includes('medium.com')) {
+      return {
+        primary: fallback,
+        fallback,
+      };
+    }
+
+    return {
+      primary: `https://v1.screenshot.11ty.dev/${encodeURIComponent(url)}/opengraph/`,
+      fallback,
+    };
+  } catch (error) {
+    return {
+      primary: FALLBACK_PLACEHOLDER,
+      fallback: FALLBACK_PLACEHOLDER,
+    };
+  }
+};
+
 const Blog = () => {
-  const posts = [
+  const rawPosts = [
+    {
+      id: 13,
+      title: 'FIRST TOKEN BIAS: TRANSFORMERS AS GRAPHS',
+      excerpt:
+        'Recent investigations suggest why Transformers don’t treat all tokens equally, routing favors at the start of the sequence',
+      date: '2025-08-19',
+      readTime: '5 min read',
+      tags: ['AI', 'Transformers', 'Deep Learning'],
+      url:
+        'https://www.cloudwalk.io/ai/first-token-bias-transformers-as-graphs',
+      featured: false,
+    },
     {
       id: 1,
       title:
@@ -153,6 +194,11 @@ const Blog = () => {
     },
   ];
 
+  const posts = rawPosts.map((post) => ({
+    ...post,
+    ...buildThumbnail(post.url),
+  }));
+
   const featuredPost = posts.find(post => post.featured);
   const regularPosts = posts.filter(post => !post.featured);
 
@@ -173,29 +219,46 @@ const Blog = () => {
 
           {/* Featured Post */}
           {featuredPost && (
-            <div className="mb-16">
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 md:p-12">
-                <div className="flex items-center mb-4">
-                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <div className="mb-8">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 md:p-4">
+                <div className="flex items-center mb-1">
+                  <span className="bg-blue-600 text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
                     Featured
                   </span>
                 </div>
-                
+
                 <a
                   href={featuredPost.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block group"
                 >
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                  <div className="overflow-hidden rounded-md mb-3 aspect-[16/6]">
+                    <img
+                      src={featuredPost.primary}
+                      alt={`Thumbnail for ${featuredPost.title}`}
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                      data-fallback-applied="false"
+                      onError={(event) => {
+                        const img = event.currentTarget;
+                        if (img.dataset.fallbackApplied === 'true') {
+                          img.src = FALLBACK_PLACEHOLDER;
+                        } else {
+                          img.dataset.fallbackApplied = 'true';
+                          img.src = featuredPost.fallback;
+                        }
+                      }}
+                    />
+                  </div>
+                  <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
                     {featuredPost.title}
                   </h2>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-sm text-gray-600 mb-3 leading-relaxed">
                     {featuredPost.excerpt}
                   </p>
                 </a>
-                
-                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-500 mb-2">
                   <time>
                     {new Date(featuredPost.date).toLocaleDateString('en-US', { 
                       year: 'numeric', 
@@ -206,10 +269,9 @@ const Blog = () => {
                   <span>•</span>
                   <span>{featuredPost.readTime}</span>
                 </div>
-                
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1">
                   {featuredPost.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-white text-gray-700 text-sm rounded-full">
+                    <span key={tag} className="px-2 py-0.5 bg-white text-gray-700 text-[10px] rounded-full">
                       {tag}
                     </span>
                   ))}
@@ -219,40 +281,67 @@ const Blog = () => {
           )}
 
           {/* Regular Posts */}
-          <div className="space-y-12">
+          <div className="space-y-10">
             {regularPosts.map((post) => (
-              <article key={post.id} className="border-b border-gray-200 pb-12 last:border-b-0">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4">
-                  <time className="text-sm text-gray-500 mb-2 sm:mb-0">
-                    {new Date(post.date).toLocaleDateString('en-US', { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}
-                  </time>
-                  <span className="text-sm text-gray-500">{post.readTime}</span>
-                </div>
-                
-                <a
-                  href={post.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block group"
-                >
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
-                    {post.title}
-                  </h2>
-                  <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                    {post.excerpt}
-                  </p>
-                </a>
-                
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">
-                      {tag}
-                    </span>
-                  ))}
+              <article key={post.id} className="border-b border-gray-200 pb-10 last:border-b-0">
+                <div className="flex flex-col md:flex-row gap-6">
+                  <a
+                    href={post.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block md:w-60 overflow-hidden rounded-xl flex-shrink-0"
+                  >
+                    <img
+                      src={post.primary}
+                      alt={`Thumbnail for ${post.title}`}
+                      className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+                      loading="lazy"
+                      data-fallback-applied="false"
+                      onError={(event) => {
+                        const img = event.currentTarget;
+                        if (img.dataset.fallbackApplied === 'true') {
+                          img.src = FALLBACK_PLACEHOLDER;
+                        } else {
+                          img.dataset.fallbackApplied = 'true';
+                          img.src = post.fallback;
+                        }
+                      }}
+                    />
+                  </a>
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-gray-500 mb-3 gap-2">
+                      <time>
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </time>
+                      <span>{post.readTime}</span>
+                    </div>
+
+                    <a
+                      href={post.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block group"
+                    >
+                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                        {post.title}
+                      </h2>
+                      <p className="text-gray-600 mb-4 leading-relaxed text-base">
+                        {post.excerpt}
+                      </p>
+                    </a>
+
+                    <div className="flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs md:text-sm rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </article>
             ))}

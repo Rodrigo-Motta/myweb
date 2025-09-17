@@ -16,7 +16,7 @@ const WorkPreview = () => {
       title: "Complex System Approach to the Brain functioning",
       description:
         "Somehow we manage to create the conscious experience from a result of interacting components: neurons, neurotransmitters, glia, and environment. I'm continuing to fail in solving these questions, but I'm persistent as many from the field.",
-      tags: ["Neuroscience", "Complex Systems"],
+      tags: ["Neuroscience","Graph Neural Networks", "Complex Systems"],
       year: "2024"
     },
   ];

@@ -1,11 +1,49 @@
-
 import { Link } from 'react-router-dom';
 
-const blogThumbnail = (url: string) =>
-  `https://v1.screenshot.11ty.dev/${encodeURIComponent(url)}/opengraph/`;
+const FALLBACK_PLACEHOLDER =
+  'data:image/svg+xml,' +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f5f5f5" offset="0"/><stop stop-color="#e7e7e7" offset="1"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/><text x="200" y="160" fill="#9ca3af" font-family="serif" font-size="36" text-anchor="middle">No preview</text></svg>',
+  );
+
+const buildThumbnail = (url: string) => {
+  try {
+    const { hostname } = new URL(url);
+    const fallback = `https://logo.clearbit.com/${hostname}?size=800`;
+
+    if (hostname.includes('medium.com')) {
+      return {
+        primary: fallback,
+        fallback,
+      };
+    }
+
+    return {
+      primary: `https://v1.screenshot.11ty.dev/${encodeURIComponent(url)}/opengraph/`,
+      fallback,
+    };
+  } catch (error) {
+    return {
+      primary: FALLBACK_PLACEHOLDER,
+      fallback: FALLBACK_PLACEHOLDER,
+    };
+  }
+};
 
 const BlogPreview = () => {
   const posts = [
+    {
+      id: 13,
+      title: 'FIRST TOKEN BIAS: TRANSFORMERS AS GRAPHS',
+      excerpt:
+        'Recent investigations suggest why Transformers don’t treat all tokens equally, routing favors at the start of the sequence',
+      date: '2025-08-19',
+      url:
+        'https://www.cloudwalk.io/ai/first-token-bias-transformers-as-graphs',
+      ...buildThumbnail(
+        'https://www.cloudwalk.io/ai/first-token-bias-transformers-as-graphs',
+      ),
+    },
     {
       id: 1,
       title:
@@ -15,7 +53,7 @@ const BlogPreview = () => {
       date: '2025-06-05',
       url:
         'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
-      thumbnail: blogThumbnail(
+      ...buildThumbnail(
         'https://www.cloudwalk.io/ai/the-emerging-spirituality-of-artificial-intelligence-from-kurzweil-to-claude-language-quietus-and-psychedelic-reports',
       ),
     },
@@ -28,7 +66,7 @@ const BlogPreview = () => {
       date: '2025-05-08',
       url:
         'https://medium.com/@rodrigodamottacc/a-ci%C3%AAncia-de-dados-dos-dados-de-dados-do-nerdcast-de-rpg-o-dado-%C3%A9-realmente-justo-d41e8e0eaeb3',
-      thumbnail: blogThumbnail(
+      ...buildThumbnail(
         'https://medium.com/@rodrigodamottacc/a-ci%C3%AAncia-de-dados-dos-dados-de-dados-do-nerdcast-de-rpg-o-dado-%C3%A9-realmente-justo-d41e8e0eaeb3',
       ),
     },
@@ -40,7 +78,7 @@ const BlogPreview = () => {
       date: '2024-06-05',
       url:
         'https://medium.com/@rodrigodamottacc/simulating-vibrations-the-advanced-physics-behind-drums-and-speakers-b350f6fb1362',
-      thumbnail: blogThumbnail(
+      ...buildThumbnail(
         'https://medium.com/@rodrigodamottacc/simulating-vibrations-the-advanced-physics-behind-drums-and-speakers-b350f6fb1362',
       ),
     },
@@ -53,7 +91,7 @@ const BlogPreview = () => {
       date: '2024-05-01',
       url:
         'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
-      thumbnail: blogThumbnail(
+      ...buildThumbnail(
         'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
       ),
     },
@@ -75,10 +113,20 @@ const BlogPreview = () => {
               <a href={post.url} target="_blank" rel="noopener noreferrer" className="block group">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
-                    src={post.thumbnail}
+                    src={post.primary}
                     alt={`Thumbnail for ${post.title}`}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                     loading="lazy"
+                    data-fallback-applied="false"
+                    onError={(event) => {
+                      const img = event.currentTarget;
+                      if (img.dataset.fallbackApplied === 'true') {
+                        img.src = FALLBACK_PLACEHOLDER;
+                      } else {
+                        img.dataset.fallbackApplied = 'true';
+                        img.src = post.fallback;
+                      }
+                    }}
                   />
                 </div>
                 <div className="p-5">
