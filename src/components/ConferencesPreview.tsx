@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { conferenceAppearances } from '../lib/conferences';
+import { conferenceAppearances, conferencesPresentations, conferencesInvitedTalks } from '../lib/conferences';
 
 const ConferencesPreview = () => {
   return (
@@ -50,6 +50,42 @@ const ConferencesPreview = () => {
               )}
             </article>
           ))}
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 mb-8">
+          <div>
+            <h3 className="font-serif text-2xl text-gray-900 mb-3">Presentations</h3>
+            <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
+              {conferencesPresentations.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-serif text-2xl text-gray-900 mb-3">Invited Talks (on site)</h3>
+            <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
+              {conferencesInvitedTalks.map((talk) => (
+                <li key={talk.text ?? talk.prefix ?? talk.linkLabel}>
+                  {talk.text ? (
+                    talk.text
+                  ) : (
+                    <span>
+                      {talk.prefix}
+                      <a
+                        href={talk.linkHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 underline"
+                      >
+                        {talk.linkLabel}
+                      </a>
+                      {talk.suffix}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <Link

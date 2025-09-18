@@ -1,24 +1,7 @@
 import Navigation from '../components/Navigation';
-import { conferenceAppearances } from '../lib/conferences';
+import { conferenceAppearances, conferencesPresentations, conferencesInvitedTalks } from '../lib/conferences';
 
-const conferencesPresentations = [
-  'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)',
-  'Poster at OHBM 2024 (Seoul, South Korea)',
-  'Poster at Brain Modes 2024 (Bilbao, Spain)',
-  'Poster at Brain Modes 2025 (Toronto, Canada)',
-];
-
-const conferencesInvitedTalks = [
-  { text: 'Yonsei University, South Korea (Prof. Byung-Hoon Kim)' },
-  { text: 'Imperial College London (Dr. Pedro Mediano)' },
-  {
-    prefix: 'University of Oxford (Prof. Rui Costa & ',
-    linkLabel: 'NeuroAI group',
-    linkHref: 'https://neuralml.github.io',
-    suffix: ')',
-  },
-  { text: 'University of Zurich (Prof. Susanne Wegener & Prof. Nicolas Langer)' },
-];
+// presentations and invited talks moved to lib for reuse
 
 const conferencesAwards = [
   'Best Work Presentation, 10th BRAINN Congress 2024 (UNICAMP, Brazil)',

@@ -61,19 +61,6 @@ const BlogPreview = () => {
       ),
     },
     {
-      id: 2,
-      title:
-        'A ciência de dados dos dados de dados do Nerdcast de RPG: O dado é realmente justo?',
-      excerpt:
-        'Usando episódios de Ghanor para investigar se os dados do podcast Nerdcast são justos.',
-      date: '2025-05-08',
-      url:
-        'https://medium.com/@rodrigodamottacc/a-ci%C3%AAncia-de-dados-dos-dados-de-dados-do-nerdcast-de-rpg-o-dado-%C3%A9-realmente-justo-d41e8e0eaeb3',
-      ...buildThumbnail(
-        'https://medium.com/@rodrigodamottacc/a-ci%C3%AAncia-de-dados-dos-dados-de-dados-do-nerdcast-de-rpg-o-dado-%C3%A9-realmente-justo-d41e8e0eaeb3',
-      ),
-    },
-    {
       id: 3,
       title: 'Simulating Vibrations: The Advanced Physics Behind Drums and Speakers',
       excerpt:

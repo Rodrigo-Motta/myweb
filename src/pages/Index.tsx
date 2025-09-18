@@ -1,6 +1,5 @@
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
-import WorkPreview from '../components/WorkPreview';
 import ConferencesPreview from '../components/ConferencesPreview';
 import BlogPreview from '../components/BlogPreview';
 import PublicationPreview from '../components/PublicationPreview';
@@ -10,7 +9,6 @@ const Index = () => {
     <div className="min-h-screen bg-white font-serif">
       <Navigation />
       <Hero />
-      <WorkPreview />
       <PublicationPreview />
       <BlogPreview />
       <ConferencesPreview />

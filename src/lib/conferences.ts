@@ -14,42 +14,57 @@ export type ConferenceAppearance = {
 export const conferenceAppearances: ConferenceAppearance[] = [
   {
     id: 1,
-    title: 'Mapping Consciousness with Complex Systems',
-    event: 'Complexity Science Summit',
+    title: 'Deep Learning Course — Geometric Deep Learning Lecturer',
+    event: 'Institute of Physics – University of São Paulo (IFUSP)',
     location: 'São Paulo, Brazil',
-    year: '2025',
+    year: '2024',
     description:
-      'Shared research on modeling subjective experience using graph neural networks and statistical physics.',
+      'One-week Deep Learning course with 5 professors from industry and academia, attended by 60 participants. I was the lecturer of the Geometric Deep Learning section at the Institute of Physics – University of São Paulo.',
     links: [
       {
-        label: 'Conference Program',
-        href: 'https://example.com/complexity-summit',
+        label: 'Content',
+        href: 'https://www.youtube.com/@Hacker.SpaceIFUSP/playlists',
       },
     ],
   },
+];
+
+// High-level list of presentations used on Conferences page and preview
+export const conferencesPresentations: string[] = [
+  'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)',
+  'Poster at OHBM 2024 (Seoul, South Korea)',
+  'Poster at Brain Modes 2024 (Bilbao, Spain)',
+  'Poster at Brain Modes 2025 (Toronto, Canada)',
+];
+
+// Invited talks list used on Conferences page and preview
+export type InvitedTalk = {
+  text?: string;
+  prefix?: string;
+  linkLabel?: string;
+  linkHref?: string;
+  suffix?: string;
+};
+
+export const conferencesInvitedTalks: InvitedTalk[] = [
   {
-    id: 2,
-    title: 'Generative AI for Neuroscience Research',
-    event: 'Latin America AI Forum',
-    location: 'Bogotá, Colombia',
-    year: '2024',
-    description:
-      'Talked about practical applications of large language models for neuroscience teams and scientific communication.',
-    links: [
-      {
-        label: 'Slides',
-        href: 'https://example.com/latam-ai-slides',
-      },
-    ],
+    prefix: 'Yonsei University, South Korea (Prof. Byung-Hoon Kim & ',
+    linkLabel: 'NAIPL',
+    linkHref: 'https://egyptdj.notion.site/naipl',
+    suffix: ')',
+  },
+  { text: 'Imperial College London (Dr. Pedro Mediano)' },
+  {
+    prefix: "King's College London (",
+    linkLabel: 'MeTrICS Lab',
+    linkHref: 'https://metrics-lab.github.io/',
+    suffix: ', Dr. Emma Robinson)',
   },
   {
-    id: 3,
-    title: 'Building Tech Communities Inside Universities',
-    event: 'Academic Innovation Day',
-    location: 'Rio de Janeiro, Brazil',
-    year: '2024',
-    description:
-      'Presented lessons from leading open community programs focused on AI, data science, and interdisciplinary collaboration.',
-    links: [],
+    prefix: 'University of Oxford (Prof. Rui Costa & ',
+    linkLabel: 'NeuroAI group',
+    linkHref: 'https://neuralml.github.io',
+    suffix: ')',
   },
+  { text: 'University of Zurich (Prof. Susanne Wegener & Prof. Nicolas Langer)' },
 ];
