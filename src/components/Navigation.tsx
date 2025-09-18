@@ -7,9 +7,7 @@ const Navigation = () => {
     { name: 'Blog', path: '/blog' },
     { name: 'Publication', path: '/publication' },
     { name: 'Conferences & Talks', path: '/conferences' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
-  ];
+    { name: 'About', path: '/about' }  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm">
