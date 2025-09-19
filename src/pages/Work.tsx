@@ -66,9 +66,9 @@ const Work = () => {
     <div className="min-h-screen bg-white font-serif">
       <Navigation />
 
-      <main className="pt-32 pb-24 px-8">
+      <main className="pt-24 md:pt-32 pb-24 px-6 md:px-8">
         <div className="max-w-5xl mx-auto">
-          <h1 className="font-serif text-5xl md:text-6xl text-gray-900 mb-8">Work</h1>
+          <h1 className="font-serif font-semibold text-5xl md:text-6xl text-gray-900 mb-8">Work</h1>
           <p className="font-serif text-xl text-gray-600 mb-24 max-w-2xl">
           </p>
 

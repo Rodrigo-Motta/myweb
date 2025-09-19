@@ -5,9 +5,9 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white font-serif">
       <Navigation />
-      <main className="pt-32 pb-24 px-8">
+      <main className="pt-24 md:pt-32 pb-24 px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="font-serif text-5xl md:text-6xl text-gray-900 mb-8">
+          <h1 className="font-serif font-semibold text-5xl md:text-6xl text-gray-900 mb-8">
             About Me
           </h1>
           <div className="space-y-4 font-serif text-gray-600 leading-relaxed">

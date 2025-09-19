@@ -4,7 +4,7 @@ import { withBasePath } from '../utils/assetPath';
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-12 px-6 md:px-8">
+    <section className="pt-24 md:pt-32 pb-12 px-6 md:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 items-start">
           {/* Left side - Image and Name */}
