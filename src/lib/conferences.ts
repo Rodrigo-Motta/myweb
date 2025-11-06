@@ -27,15 +27,29 @@ export const conferenceAppearances: ConferenceAppearance[] = [
       },
     ],
   },
+  {
+    id: 2,
+    title: 'Talk — Brain Modes 2025',
+    event: 'Brain Modes 2025',
+    location: 'Toronto, Canada',
+    year: '2025',
+    description: 'Talk presented at Brain Modes 2025. Recording available.',
+    links: [
+      {
+        label: 'Talk recording',
+        href: 'https://youtu.be/UfnNs7bVVfQ?list=PLArBKNfJxuum3IMjvqlr934_lD18mBX2j',
+      },
+    ],
+  },
 ];
 
 // High-level list of presentations used on Conferences page and preview
 export const conferencesPresentations: string[] = [
-  'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)',
-  'Poster at OHBM 2024 (Seoul, South Korea)',
-  'Poster at Brain Modes 2024 (Bilbao, Spain)',
   'Talk at Brain Modes 2025 (Toronto, Canada)',
   'Poster at Stanford Graph Learning Workshop 2025 (Palo Alto, US)',
+  'Poster at OHBM 2024 (Seoul, South Korea)',
+  'Poster at Brain Modes 2024 (Bilbao, Spain)',
+  'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)'
 ];
 
 // Invited talks list used on Conferences page and preview
