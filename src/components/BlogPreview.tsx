@@ -35,6 +35,17 @@ const buildThumbnail = (url: string) => {
 const BlogPreview = () => {
   const [ogMap, setOgMap] = useState<Record<string, string | null>>({});
   const posts = [
+        {
+      id: 14,
+      title: 'RAG, TOOL-CALLING, AND THE FIGHT AGAINST HALLUCINATIONS',
+      excerpt:
+        'This article serves as a survey and futuristic perspective on trustworthy AI anchored on knowledge retrieval',
+      date: '2025-11-06',
+      url: 'https://www.cloudwalk.io/ai/rag-tool-calling-and-the-fight-against-hallucinations',
+      ...buildThumbnail(
+        'https://www.cloudwalk.io/ai/rag-tool-calling-and-the-fight-against-hallucinations',
+      ),
+    },
     {
       id: 13,
       title: 'FIRST TOKEN BIAS: TRANSFORMERS AS GRAPHS',
@@ -45,17 +56,6 @@ const BlogPreview = () => {
         'https://www.cloudwalk.io/ai/first-token-bias-transformers-as-graphs',
       ...buildThumbnail(
         'https://www.cloudwalk.io/ai/first-token-bias-transformers-as-graphs',
-      ),
-    },
-    {
-      id: 14,
-      title: 'RAG, TOOL-CALLING, AND THE FIGHT AGAINST HALLUCINATIONS',
-      excerpt:
-        'This article serves as a survey and futuristic perspective on trustworthy AI anchored on knowledge retrieval',
-      date: '2025-11-06',
-      url: 'https://www.cloudwalk.io/ai/rag-tool-calling-and-the-fight-against-hallucinations',
-      ...buildThumbnail(
-        'https://www.cloudwalk.io/ai/rag-tool-calling-and-the-fight-against-hallucinations',
       ),
     },
     {
