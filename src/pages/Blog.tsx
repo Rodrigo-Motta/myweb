@@ -48,6 +48,17 @@ const Blog = () => {
       featured: false,
     },
     {
+      id: 14,
+      title: 'RAG, TOOL-CALLING, AND THE FIGHT AGAINST HALLUCINATIONS',
+      excerpt:
+        'This article serves as a survey and futuristic perspective on trustworthy AI anchored on knowledge retrieval',
+      date: '2025-11-06',
+      readTime: '8 min read',
+      tags: ['AI', 'RAG', 'Tool-calling', 'Trustworthy AI'],
+      url: 'https://www.cloudwalk.io/ai/rag-tool-calling-and-the-fight-against-hallucinations',
+      featured: false,
+    },
+    {
       id: 1,
       title:
         'The Emerging Spirituality of Artificial Intelligence? From Kurzweil to Claude, Language Quietus and Psychedelic Reports',
