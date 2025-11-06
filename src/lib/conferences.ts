@@ -34,7 +34,8 @@ export const conferencesPresentations: string[] = [
   'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)',
   'Poster at OHBM 2024 (Seoul, South Korea)',
   'Poster at Brain Modes 2024 (Bilbao, Spain)',
-  'Poster at Brain Modes 2025 (Toronto, Canada)',
+  'Talk at Brain Modes 2025 (Toronto, Canada)',
+  'Poster at Stanford Graph Learning Workshop 2025 (Palo Alto, US)',
 ];
 
 // Invited talks list used on Conferences page and preview
