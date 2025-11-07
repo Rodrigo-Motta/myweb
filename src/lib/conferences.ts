@@ -44,12 +44,13 @@ export const conferenceAppearances: ConferenceAppearance[] = [
 ];
 
 // High-level list of presentations used on Conferences page and preview
-export const conferencesPresentations: string[] = [
-  'Talk at Brain Modes 2025 (Toronto, Canada)',
-  'Poster at Stanford Graph Learning Workshop 2025 (Palo Alto, US)',
-  'Poster at OHBM 2024 (Seoul, South Korea)',
-  'Poster at Brain Modes 2024 (Bilbao, Spain)',
-  'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)'
+// Each item may optionally include an href to link to a recording or resource
+export const conferencesPresentations: { label: string; href?: string }[] = [
+  { label: 'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)' },
+  { label: 'Poster at OHBM 2024 (Seoul, South Korea)' },
+  { label: 'Poster at Brain Modes 2024 (Bilbao, Spain)' },
+  { label: 'Talk at Brain Modes 2025 (Toronto, Canada)', href: 'https://youtu.be/UfnNs7bVVfQ?list=PLArBKNfJxuum3IMjvqlr934_lD18mBX2j' },
+  { label: 'Poster at Stanford Graph Learning Workshop 2025 (Palo Alto, US)' },
 ];
 
 // Invited talks list used on Conferences page and preview

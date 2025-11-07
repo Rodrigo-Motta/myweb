@@ -57,7 +57,15 @@ const ConferencesPreview = () => {
             <h3 className="font-serif text-2xl text-gray-900 mb-3">Presentations</h3>
             <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
               {conferencesPresentations.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item.label}>
+                  {item.href ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
+                      {item.label}
+                    </a>
+                  ) : (
+                    item.label
+                  )}
+                </li>
               ))}
             </ul>
           </div>
