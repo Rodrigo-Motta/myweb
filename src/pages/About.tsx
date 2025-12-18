@@ -22,8 +22,10 @@ const About = () => {
               I specialize in the intersection of technology and human experience, with particular interests in neuroscience, artificial intelligence, and creative applications of data science.
             </p>
             <p>
-              My work spans from academic research in brain and mind studies
-              to more practical applications of data science in industry.
+              Investigating collective behavior and complex systems is central to my work and research, spanning brain dynamics to AI agentic systems. My work bridges academic research in brain and mind studies with practical applications of data science in industry.
+            </p>
+            <p>
+              One of my recent projects explores marketplaces as computational laboratories: agents act as merchants and the network structure is endogenous and time-varying (links form and dissolve as a consequence of interaction outcomes).
             </p>
           </div>
 

@@ -41,6 +41,15 @@ export const conferenceAppearances: ConferenceAppearance[] = [
       },
     ],
   },
+  {
+    id: 3,
+    title: 'AgentMarket: Generative Agents in Dynamic Market Networks',
+    event: 'Stanford Graph Learning Workshop 2025',
+    location: 'Palo Alto, US',
+    year: '2025',
+    description: 'Poster presentation on generative agents in dynamic market networks.',
+    links: [],
+  },
 ];
 
 // High-level list of presentations used on Conferences page and preview

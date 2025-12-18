@@ -20,6 +20,15 @@ const PublicationPreview = () => {
       journal: 'bioRxiv 2025.04.25.650509',
       doi: 'https://doi.org/10.1101/2025.04.25.650509',
     },
+    {
+      id: 4,
+      title:
+        'Inferences on the Watts-Strogatz Model: A Study on Brain Functional Connectivity',
+      authors:
+        'Allan Falconi-Souto, Rodrigo M Cabral-Carvalho, André Fujita, João Ricardo Sato',
+      journal: 'Neuroinformatics, 2025;23(4):57. Springer US',
+      doi: 'https://link.springer.com/article/10.1007/s12021-025-09756-z',
+    },
   ];
 
   return (
