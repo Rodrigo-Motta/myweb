@@ -24,7 +24,7 @@ const Hero = () => {
               M.Sc. in Neuroscience and Cognition - UFABC & King's College London
             </p>
             <p className="font-serif text-base text-gray-500 mb-8 leading-relaxed">
-              B.Sc. in Physics - University of São Paulo
+              B.Sc. in Physics - University of São Paulo (USP)
             </p>
             
             {/* Social Media Buttons */}
