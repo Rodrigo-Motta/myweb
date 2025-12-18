@@ -79,7 +79,7 @@ const Hero = () => {
                 and interdisciplinarity is central to my approach.
               </p>
               <p>
-                Investigating collective behavior and complex systems is central to my work and research, spanning brain dynamics to AI agentic systems. One of my recent projects explores marketplaces as computational laboratories where agents act as merchants and the network structure is endogenous and time-varying (links form and dissolve as a consequence of interaction outcomes) (Cabral-Carvalho &amp; Terra, 2025).
+                Investigating collective behavior and complex systems is central to my work and research, spanning brain dynamics to AI agentic systems. One of my recent projects explores marketplaces as computational laboratories where agents act as merchants and the network structure is endogenous and time-varying (links form and dissolve as a consequence of interaction outcomes).
               </p>
               <p>I deeply value diversity, collaboration, and respect.</p>
               <p>
