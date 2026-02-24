@@ -29,6 +29,9 @@ const Index = () => {
             <a href="https://medium.com/@rodrigodamottacc" target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
               Medium
             </a>
+            <a href="https://scholar.google.com/citations?user=jaaS6acAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
+              Google Scholar
+            </a>
           </div>
         </div>
       </footer>
