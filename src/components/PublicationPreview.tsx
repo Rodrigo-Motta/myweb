@@ -14,6 +14,15 @@ const PublicationPreview = () => {
     {
       id: 2,
       title:
+        'Characterizing Human Semantic Navigation in Concept Production as Trajectories in Embedding Space',
+      authors:
+        'Felipe D. Toro-Hernández, Jesuino Vieira Filho, Rodrigo M. Cabral-Carvalho',
+      journal: 'arXiv preprint arXiv:2602.05971 [cs.CL] (submitted Feb 2026) — accepted to ICLR 2026',
+      doi: 'https://doi.org/10.48550/arXiv.2602.05971',
+    },
+    {
+      id: 3,
+      title:
         'Ayahuasca Shifts Brain Dynamics Toward Higher Entropy: Persistent Elevation of Ising Temperature Correlates with Acute Subjective Effects',
       authors:
         'R. Cabral-Carvalho, Fernanda Palhano-Fontes, Draulio B. Araujo, João R. Sato',
@@ -21,22 +30,13 @@ const PublicationPreview = () => {
       doi: 'https://doi.org/10.1101/2025.04.25.650509',
     },
     {
-      id: 4,
+      id: 5,
       title:
         'Inferences on the Watts-Strogatz Model: A Study on Brain Functional Connectivity',
       authors:
         'Allan Falconi-Souto, Rodrigo M Cabral-Carvalho, André Fujita, João Ricardo Sato',
       journal: 'Neuroinformatics, 2025;23(4):57. Springer US',
       doi: 'https://link.springer.com/article/10.1007/s12021-025-09756-z',
-    },
-    {
-      id: 5,
-      title:
-        'Characterizing Human Semantic Navigation in Concept Production as Trajectories in Embedding Space',
-      authors:
-        'Felipe D. Toro-Hernández, Jesuino Vieira Filho, Rodrigo M. Cabral-Carvalho',
-      journal: 'arXiv preprint arXiv:2602.05971 [cs.CL] (submitted Feb 2026) — accepted to ICLR 2026',
-      doi: 'https://doi.org/10.48550/arXiv.2602.05971',
     },
   ];
 
