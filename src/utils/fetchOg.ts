@@ -1,3 +1,5 @@
+import bakedOgImages from 'virtual:og-images';
+
 function attr(tag: string, name: string) {
   const re = new RegExp(name + "\\s*=\\s*([\"\'])(.*?)\\1", "i");
   const m = tag.match(re);
@@ -47,6 +49,13 @@ function parseOgFromHtml(html: string, baseUrl: string): string | null {
 
 export async function fetchOgImage(url: string): Promise<string | null> {
   try {
+    // Build-time pre-fetched OG images (baked into the bundle). This works
+    // in static deploys (GitHub Pages) where there's no server-side preview
+    // API and browser-side fetches would be rate-limited.
+    const baked = bakedOgImages[url];
+    if (typeof baked === 'string' && baked) return baked;
+    if (baked === null) return null; // known miss at build time
+
     const rawBase = (import.meta as any)?.env?.VITE_PREVIEW_API_BASE as string | undefined;
     // In dev, default to the same-origin /api/link-preview middleware exposed
     // by vite.config.ts. In prod it simply 404s and we fall back below.
