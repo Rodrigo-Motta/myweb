@@ -14,13 +14,13 @@ const Index = () => {
       <ConferencesPreview />
       
       {/* Footer */}
-      <footer className="py-16 px-8">
+      <footer className="py-10 px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="font-serif text-gray-500 mb-6">
+          <p className="font-serif text-gray-500 mb-4">
             © 2025 Rodrigo da Motta Cabral-Carvalho. All rights reserved.
           </p>
           <div className="flex justify-center space-x-8">
-            <a href="https://www.linkedin.com/in/rodrigo-da-motta-c-de-carvalho-7422ba181/" target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
+            <a href="https://www.linkedin.com/in/rodrigo-m-cabral-carvalho-7422ba181/" target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
               LinkedIn
             </a>
             <a href="https://github.com/Rodrigo-Motta" target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">

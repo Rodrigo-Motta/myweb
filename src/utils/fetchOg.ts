@@ -48,13 +48,23 @@ function parseOgFromHtml(html: string, baseUrl: string): string | null {
 export async function fetchOgImage(url: string): Promise<string | null> {
   try {
     const rawBase = (import.meta as any)?.env?.VITE_PREVIEW_API_BASE as string | undefined;
-    const apiBase = rawBase ? rawBase.replace(/\/$/, '') : '';
+    // In dev, default to the same-origin /api/link-preview middleware exposed
+    // by vite.config.ts. In prod it simply 404s and we fall back below.
+    const apiBase = rawBase
+      ? rawBase.replace(/\/$/, '')
+      : typeof window !== 'undefined'
+        ? window.location.origin
+        : '';
 
     if (apiBase) {
-      const r = await fetch(`${apiBase}/api/link-preview?url=${encodeURIComponent(url)}`);
-      if (r.ok) {
-        const data = await r.json();
-        if (data && typeof data.image === 'string') return data.image as string;
+      try {
+        const r = await fetch(`${apiBase}/api/link-preview?url=${encodeURIComponent(url)}`);
+        if (r.ok) {
+          const data = await r.json();
+          if (data && typeof data.image === 'string' && data.image) return data.image as string;
+        }
+      } catch {
+        // network/404 in prod — fall through to microlink
       }
     }
 

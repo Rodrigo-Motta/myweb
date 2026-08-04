@@ -6,6 +6,7 @@ const Navigation = () => {
   const location = useLocation();
   
   const navItems = [
+    { name: 'Projects', path: '/projects' },
     { name: 'Blog', path: '/blog' },
     { name: 'Publication', path: '/publication' },
     { name: 'Conferences & Talks', path: '/conferences' },

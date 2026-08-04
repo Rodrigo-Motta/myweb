@@ -66,15 +66,15 @@ const Work = () => {
     <div className="min-h-screen bg-white font-serif">
       <Navigation />
 
-      <main className="pt-24 md:pt-32 pb-24 px-6 md:px-8">
+      <main className="pt-24 md:pt-28 pb-16 px-6 md:px-8">
         <div className="max-w-5xl mx-auto">
-          <h1 className="font-serif font-semibold text-5xl md:text-6xl text-gray-900 mb-8">Work</h1>
-          <p className="font-serif text-xl text-gray-600 mb-24 max-w-2xl">
+          <h1 className="font-serif font-semibold text-4xl md:text-5xl text-gray-900 mb-4">Work</h1>
+          <p className="font-serif text-lg text-gray-600 mb-12 max-w-2xl">
           </p>
 
-          <section className="mb-20">
-            <h2 className="font-serif text-3xl text-gray-900 mb-6">Scholarships & Funding</h2>
-            <p className="font-serif text-gray-600 leading-relaxed mb-4">
+          <section className="mb-12">
+            <h2 className="font-serif text-2xl text-gray-900 mb-4">Scholarships & Funding</h2>
+            <p className="font-serif text-gray-600 leading-relaxed mb-3">
               Awarded prestigious research scholarships in AI and Neuroscience:
             </p>
             <div className="flex flex-wrap gap-3">
@@ -93,39 +93,39 @@ const Work = () => {
           </section>
 
           <section>
-            <h2 className="font-serif text-3xl text-gray-900 mb-10">Key Projects</h2>
-            <div className="grid gap-12 md:grid-cols-2">
+            <h2 className="font-serif text-2xl text-gray-900 mb-6">Key Projects</h2>
+            <div className="grid gap-6 md:grid-cols-2">
               {projects.map((project) => (
               <article
                 key={project.id}
-                className="rounded-lg border border-gray-200 p-8 shadow-sm transition-transform hover:-translate-y-1"
+                className="rounded-lg border border-gray-200 p-5 shadow-sm transition-transform hover:-translate-y-1"
               >
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="font-serif text-2xl text-gray-900">{project.title}</h3>
-                  <span className="font-serif text-sm text-gray-500">{project.year}</span>
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="font-serif text-lg text-gray-900">{project.title}</h3>
+                  <span className="font-serif text-xs text-gray-500">{project.year}</span>
                 </div>
 
-                <p className="font-serif text-gray-600 leading-relaxed mb-6">
+                <p className="font-serif text-gray-600 leading-relaxed mb-4 text-sm">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-3 mb-4">
+                <div className="flex flex-wrap gap-3 mb-3">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="font-serif text-xs uppercase tracking-wide text-gray-500">
+                    <span key={tag} className="font-serif text-[11px] uppercase tracking-wide text-gray-500">
                       {tag}
                     </span>
                   ))}
                 </div>
 
                 {project.links && project.links.length > 0 && (
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     {project.links.map((href, idx) => (
                       <a
                         key={idx}
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-serif text-sm text-blue-600 underline break-words"
+                        className="font-serif text-xs text-blue-600 underline break-words"
                       >
                         {href}
                       </a>

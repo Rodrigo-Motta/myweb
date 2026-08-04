@@ -3,21 +3,21 @@ import { conferenceAppearances, conferencesPresentations, conferencesInvitedTalk
 
 const ConferencesPreview = () => {
   return (
-    <section className="py-12 px-6 md:px-8">
+    <section className="py-8 px-6 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl text-gray-900 mb-8">
+        <h2 className="font-serif text-2xl md:text-3xl text-gray-900 mb-6">
           Conferences & Talks
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-2 mb-8">
+        <div className="grid gap-4 md:grid-cols-2 mb-6">
           {conferenceAppearances.map((appearance) => (
             <article
               key={appearance.id}
-              className="rounded-lg border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow"
+              className="rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="flex flex-col gap-1 mb-3">
+              <div className="flex flex-col gap-1 mb-2">
                 <div>
-                  <h3 className="font-serif text-lg text-gray-900">
+                  <h3 className="font-serif text-base text-gray-900">
                     {appearance.title}
                   </h3>
                   <p className="font-serif text-gray-600 text-xs">
@@ -29,7 +29,7 @@ const ConferencesPreview = () => {
                 </div>
               </div>
 
-              <p className="font-serif text-gray-600 leading-relaxed mb-3 text-sm">
+              <p className="font-serif text-gray-600 leading-relaxed mb-2 text-xs">
                 {appearance.description}
               </p>
 
@@ -52,10 +52,10 @@ const ConferencesPreview = () => {
           ))}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 mb-8">
+        <div className="grid gap-4 md:grid-cols-2 mb-6">
           <div>
-            <h3 className="font-serif text-2xl text-gray-900 mb-3">Presentations</h3>
-            <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
+            <h3 className="font-serif text-lg text-gray-900 mb-2">Presentations</h3>
+            <ul className="space-y-1.5 text-xs text-gray-600 list-disc pl-5">
               {conferencesPresentations.map((item) => (
                 <li key={item.label}>
                   {item.href ? (
@@ -70,8 +70,8 @@ const ConferencesPreview = () => {
             </ul>
           </div>
           <div>
-            <h3 className="font-serif text-2xl text-gray-900 mb-3">Invited Talks (on site)</h3>
-            <ul className="space-y-2 text-sm text-gray-600 list-disc pl-5">
+            <h3 className="font-serif text-lg text-gray-900 mb-2">Invited Talks (on site)</h3>
+            <ul className="space-y-1.5 text-xs text-gray-600 list-disc pl-5">
               {conferencesInvitedTalks.map((talk) => (
                 <li key={talk.text ?? talk.prefix ?? talk.linkLabel}>
                   {talk.text ? (

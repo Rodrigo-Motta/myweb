@@ -11,18 +11,10 @@ const FALLBACK_PLACEHOLDER =
 const buildThumbnail = (url: string) => {
   try {
     const { hostname } = new URL(url);
-    const fallback = `https://logo.clearbit.com/${hostname}?size=800`;
-
-    if (hostname.includes('medium.com')) {
-      return {
-        primary: fallback,
-        fallback,
-      };
-    }
 
     return {
       primary: `https://v1.screenshot.11ty.dev/${encodeURIComponent(url)}/opengraph/`,
-      fallback,
+      fallback: FALLBACK_PLACEHOLDER,
     };
   } catch (error) {
     return {
@@ -35,6 +27,18 @@ const buildThumbnail = (url: string) => {
 const Blog = () => {
   const [ogMap, setOgMap] = useState<Record<string, string | null>>({});
   const rawPosts = [
+        {
+      id: 15,
+      title:
+        'Brazilian AI Researcher From CloudWalk Unveils Multi-Agent Marketplace Simulation at Stanford',
+      excerpt:
+        'A conversation about a multi-agent marketplace simulation where AI agents spontaneously develop social dynamics, trade preferences, and unexpected economic behaviors — including an unprompted barter between a Brazilian beach vendor and a Tibetan honey merchant.',
+      date: '2025-11-26',
+      readTime: '9 min read',
+      tags: ['AI', 'Multi-Agent Systems', 'Research'],
+      url: 'https://www.cloudwalk.io/newsroom/brazilian-ai-researcher-from-cloudwalk-unveils-multi-agent-marketplace-simulation-at-stanford-pioneering-the-future-of-autonomous-digital-commerce',
+      featured: true,
+    },
         {
       id: 14,
       title: 'RAG, TOOL-CALLING, AND THE FIGHT AGAINST HALLUCINATIONS',
@@ -107,7 +111,7 @@ const Blog = () => {
       tags: ['AI', 'LLMs', 'Psychology'],
       url:
         'https://medium.com/@rodrigodamottacc/using-pre-trained-transformers-for-semantic-analysis-of-self-report-measures-in-psychology-a-fc412d5bbb5e',
-      featured: true,
+      featured: false,
     },
     {
       id: 5,
@@ -244,11 +248,11 @@ const Blog = () => {
       
       <main className="pt-24 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-10">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               Blog
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Where a personal projects, Data Science, Cognition, Neuroscience, AI, Physics, Education, and some entropy meet.
             </p>
           </div>
@@ -319,15 +323,15 @@ const Blog = () => {
           )}
 
           {/* Regular Posts */}
-          <div className="space-y-10">
+          <div className="space-y-6">
             {regularPosts.map((post) => (
-              <article key={post.id} className="border-b border-gray-200 pb-10 last:border-b-0">
-                <div className="flex flex-col md:flex-row gap-6">
+              <article key={post.id} className="border-b border-gray-200 pb-6 last:border-b-0">
+                <div className="flex flex-col md:flex-row gap-4">
                   <a
                     href={post.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block md:w-60 overflow-hidden rounded-xl flex-shrink-0"
+                    className="block md:w-44 overflow-hidden rounded-xl flex-shrink-0"
                   >
                     <img
                       src={ogMap[post.url] || post.primary}
@@ -347,7 +351,7 @@ const Blog = () => {
                     />
                   </a>
                   <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-gray-500 mb-3 gap-2">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-gray-500 mb-2 gap-2">
                       <time>
                         {new Date(post.date).toLocaleDateString('en-US', {
                           year: 'numeric',
@@ -364,17 +368,17 @@ const Blog = () => {
                       rel="noopener noreferrer"
                       className="block group"
                     >
-                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                      <h2 className="text-lg md:text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
                         {post.title}
                       </h2>
-                      <p className="text-gray-600 mb-4 leading-relaxed text-base">
+                      <p className="text-gray-600 mb-2 leading-relaxed text-sm">
                         {post.excerpt}
                       </p>
                     </a>
 
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag) => (
-                        <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-700 text-xs md:text-sm rounded-full">
+                        <span key={tag} className="px-2 py-0.5 bg-gray-100 text-gray-700 text-[11px] rounded-full">
                           {tag}
                         </span>
                       ))}
