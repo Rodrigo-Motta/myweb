@@ -1,7 +1,35 @@
 import Navigation from '../components/Navigation';
 
-const Publication = () => {
-  const items = [
+type Publication = {
+  id: number;
+  title: string;
+  authors: string;
+  journal: string;
+  doi: string;
+  featured?: boolean;
+};
+
+const PublicationPage = () => {
+  const items: Publication[] = [
+    {
+      id: 7,
+      title:
+        'RCWT: Measuring Task-Budget Displacement from Coordination Content in LLM Calls',
+      authors:
+        'Brenda Lelis, Rodrigo Cabral-Carvalho',
+      journal: 'arXiv preprint arXiv:2607.12216 (2026)',
+      doi: 'https://doi.org/10.48550/arXiv.2607.12216',
+    },
+    {
+      id: 6,
+      title:
+        'Comparing Semantic Navigation in Humans and Large Language Models using Natural Language Processing',
+      authors:
+        'Gabriel Paris-Colombo, Rodrigo M Cabral-Carvalho, Felipe D Toro-Hernández',
+      journal:
+        'Proceedings of the Annual Meeting of the Cognitive Science Society, 2026, 48(0)',
+      doi: 'https://doi.org/10.48550/arXiv.2607.12195',
+    },
     {
       id: 1,
       title:
@@ -10,6 +38,7 @@ const Publication = () => {
         'R. Cabral-Carvalho, Walter H. L. Pinaya, João R. Sato',
       journal: 'Network Neuroscience 2025',
       doi: 'https://doi.org/10.1162/netn_a_00451',
+      featured: true,
     },
     {
       id: 2,
@@ -17,8 +46,9 @@ const Publication = () => {
         'Characterizing Human Semantic Navigation in Concept Production as Trajectories in Embedding Space',
       authors:
         'Felipe D. Toro-Hernández, Jesuino Vieira Filho, Rodrigo M. Cabral-Carvalho',
-      journal: 'arXiv preprint arXiv:2602.05971 [cs.CL] (submitted Feb 2026) — accepted to ICLR 2026',
+      journal: 'International Conference on Learning Representations (ICLR), 2026',
       doi: 'https://doi.org/10.48550/arXiv.2602.05971',
+      featured: true,
     },
     {
       id: 3,
@@ -49,37 +79,84 @@ const Publication = () => {
     }
   ];
 
+  const featuredItems = items.filter((item) => item.featured);
+  const regularItems = items.filter((item) => !item.featured);
+
+  const renderArticle = (item: Publication) => (
+    <article key={item.id} className="border-b border-gray-200 pb-4">
+      <h2 className="font-serif text-lg text-gray-900 mb-1">
+        {item.title}
+      </h2>
+      <p className="font-serif text-gray-600 text-xs mb-1" dangerouslySetInnerHTML={{ __html: item.authors.replace(/Cabral-Carvalho/g, '<b style="color:#111">Cabral-Carvalho</b>') }} />
+      <p className="font-serif text-gray-500 text-xs mb-2">{item.journal}</p>
+      <a
+        href={item.doi}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block font-serif text-xs text-blue-600 underline"
+      >
+        View Article
+      </a>
+    </article>
+  );
+
   return (
     <div className="min-h-screen bg-white font-serif">
       <Navigation />
 
-      <main className="pt-24 md:pt-32 pb-24 px-6 md:px-8">
+      <main className="pt-24 md:pt-28 pb-16 px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="font-serif font-semibold text-5xl md:text-6xl text-gray-900 mb-8">
+          <h1 className="font-serif font-semibold text-4xl md:text-5xl text-gray-900 mb-4">
             Publications
           </h1>
-          <p className="font-serif text-xl text-gray-600 mb-24 max-w-2xl">
+          <p className="font-serif text-lg text-gray-600 mb-10 max-w-2xl">
             A selection of my recent academic work.
           </p>
 
-          <div className="space-y-10">
-            {items.map((item) => (
-              <article key={item.id} className="border-b border-gray-200 pb-6">
-                <h2 className="font-serif text-2xl text-gray-900 mb-2">
-                  {item.title}
-                </h2>
-                <p className="font-serif text-gray-600 text-sm mb-1" dangerouslySetInnerHTML={{ __html: item.authors.replace(/Cabral-Carvalho/g, '<b style="color:#111">Cabral-Carvalho</b>') }} />
-                <p className="font-serif text-gray-500 text-sm mb-3">{item.journal}</p>
-                <a
-                  href={item.doi}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block font-serif text-sm text-blue-600 underline"
-                >
-                  View Article
-                </a>
-              </article>
-            ))}
+          {/* Highlighted publications */}
+          {featuredItems.length > 0 && (
+            <div className="mb-10">
+              <h2 className="font-serif text-xl text-gray-900 mb-4">
+                Highlights
+              </h2>
+              <div className="grid gap-3 md:grid-cols-2">
+                {featuredItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-1 md:p-1.5"
+                  >
+                    <div className="rounded-md p-4 h-full">
+                      <div className="flex items-center mb-2">
+                        <span className="bg-blue-600 text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
+                          Featured
+                        </span>
+                      </div>
+                      <h3 className="font-serif text-base text-gray-900 mb-1 leading-snug">
+                        {item.title}
+                      </h3>
+                      <p
+                        className="font-serif text-gray-600 text-xs mb-1"
+                        dangerouslySetInnerHTML={{ __html: item.authors.replace(/Cabral-Carvalho/g, '<b style="color:#111">Cabral-Carvalho</b>') }}
+                      />
+                      <p className="font-serif text-gray-500 text-xs mb-2">{item.journal}</p>
+                      <a
+                        href={item.doi}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block font-serif text-xs text-blue-600 underline"
+                      >
+                        View Article
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* All publications */}
+          <div className="space-y-6">
+            {regularItems.map(renderArticle)}
           </div>
         </div>
       </main>
@@ -87,4 +164,4 @@ const Publication = () => {
   );
 };
 
-export default Publication;
+export default PublicationPage;

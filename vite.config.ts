@@ -97,6 +97,24 @@ export default defineConfig(({ mode }) => {
               const html = await r.text();
               body = parsePreview(html, target);
             }
+            // Server-side fallback to Microlink when no OG image was found
+            // (e.g. pages that render og:image via JS). This avoids relying
+            // on browser-side CORS/rate-limited calls for the client.
+            if (!body.image) {
+              try {
+                const mResp = await fetch(
+                  `https://api.microlink.io?url=${encodeURIComponent(target)}&fields=image.url`,
+                  { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(8000) },
+                );
+                if (mResp.ok) {
+                  const mData = await mResp.json();
+                  const mImg = mData?.data?.image?.url;
+                  if (typeof mImg === "string" && mImg) body.image = mImg;
+                }
+              } catch {
+                // ignore microlink failure, keep body as-is
+              }
+            }
             res.setHeader("content-type", "application/json");
             res.end(JSON.stringify(body));
           } catch (err: any) {

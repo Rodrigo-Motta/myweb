@@ -5,12 +5,12 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white font-serif">
       <Navigation />
-      <main className="pt-24 md:pt-32 pb-24 px-6 md:px-8">
+      <main className="pt-24 md:pt-28 pb-16 px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="font-serif font-semibold text-5xl md:text-6xl text-gray-900 mb-8">
+          <h1 className="font-serif font-semibold text-4xl md:text-5xl text-gray-900 mb-4">
             About Me
           </h1>
-          <div className="space-y-4 font-serif text-gray-600 leading-relaxed">
+          <div className="space-y-3 font-serif text-gray-600 leading-relaxed">
             <p>
               Welcome to my digital space where I share my work, thoughts, and creative journey.
               Here you can find a brief timeline and some pieces of information about me.
@@ -19,10 +19,7 @@ const About = () => {
               When I figured out that astrophysics was not quite for me, I was absolutely captivated by the world of complex systems, computers, data, and probability. From that moment on, my mind became absorbed by challenging questions: how can intelligence emerge from simple rules? Can we model consciousness? How do networks and algorithms shape our understanding of reality?
             </p>
             <p>
-              I specialize in the intersection of technology and human experience, with particular interests in neuroscience, artificial intelligence, and creative applications of data science.
-            </p>
-            <p>
-              Investigating collective behavior and complex systems is central to my work and research, spanning brain dynamics to AI agentic systems. My work bridges academic research in brain and mind studies with practical applications of data science in industry.
+              I'm currently doing work on representation learning of clients for financial foundation models and post-training for downstream tasks at CloudWalk. Moreover, I've been investigating collective behavior and complex systems, spanning brain dynamics to AI agentic systems. My work bridges academic research in brain and mind studies with practical applications of data science in industry.
             </p>
             <p>
               One of my recent projects explores marketplaces as computational laboratories: agents act as merchants and the network structure is endogenous and time-varying (links form and dissolve as a consequence of interaction outcomes).
@@ -30,7 +27,7 @@ const About = () => {
           </div>
 
 
-          <div className="mt-12 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <img
               src={withBasePath('timeline.png')}
               alt="Timeline of my experience"
@@ -38,7 +35,7 @@ const About = () => {
             />
           </div>
 
-          <div className="mt-12 flex flex-col md:flex-row items-center md:items-start gap-6">
+          <div className="mt-8 flex flex-col md:flex-row items-center md:items-start gap-6">
           <img
             src={withBasePath('community.png')}
             alt="Community engagement"

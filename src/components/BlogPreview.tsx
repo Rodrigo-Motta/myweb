@@ -10,19 +10,9 @@ const FALLBACK_PLACEHOLDER =
 
 const buildThumbnail = (url: string) => {
   try {
-    const { hostname } = new URL(url);
-    const fallback = `https://logo.clearbit.com/${hostname}?size=800`;
-
-    if (hostname.includes('medium.com')) {
-      return {
-        primary: fallback,
-        fallback,
-      };
-    }
-
     return {
       primary: `https://v1.screenshot.11ty.dev/${encodeURIComponent(url)}/opengraph/`,
-      fallback,
+      fallback: FALLBACK_PLACEHOLDER,
     };
   } catch (error) {
     return {
@@ -35,6 +25,18 @@ const buildThumbnail = (url: string) => {
 const BlogPreview = () => {
   const [ogMap, setOgMap] = useState<Record<string, string | null>>({});
   const posts = [
+        {
+      id: 15,
+      title:
+        'Brazilian AI Researcher From CloudWalk Unveils Multi-Agent Marketplace Simulation at Stanford',
+      excerpt:
+        'A multi-agent marketplace simulation where AI agents spontaneously develop social dynamics and unexpected economic behaviors — including an unprompted barter between a Brazilian beach vendor and a Tibetan honey merchant.',
+      date: '2025-11-26',
+      url: 'https://www.cloudwalk.io/newsroom/brazilian-ai-researcher-from-cloudwalk-unveils-multi-agent-marketplace-simulation-at-stanford-pioneering-the-future-of-autonomous-digital-commerce',
+      ...buildThumbnail(
+        'https://www.cloudwalk.io/newsroom/brazilian-ai-researcher-from-cloudwalk-unveils-multi-agent-marketplace-simulation-at-stanford-pioneering-the-future-of-autonomous-digital-commerce',
+      ),
+    },
         {
       id: 14,
       title: 'RAG, TOOL-CALLING, AND THE FIGHT AGAINST HALLUCINATIONS',
@@ -119,13 +121,13 @@ const BlogPreview = () => {
   }, []);
 
   return (
-    <section className="py-12 px-6 md:px-8 bg-gray-50">
+    <section className="py-8 px-6 md:px-8 bg-gray-50">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl text-gray-900 mb-8">
+        <h2 className="font-serif text-2xl md:text-3xl text-gray-900 mb-6">
           Recent Writing
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-2 mb-8">
+        <div className="grid gap-4 md:grid-cols-2 mb-6">
           {posts.map((post) => (
             <article
               key={post.id}
@@ -150,18 +152,18 @@ const BlogPreview = () => {
                     }}
                   />
                 </div>
-                <div className="p-5">
-                  <time className="font-serif text-xs text-gray-500 mb-2 block uppercase tracking-wide">
+                <div className="p-4">
+                  <time className="font-serif text-xs text-gray-500 mb-1 block uppercase tracking-wide">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
                     })}
                   </time>
-                  <h3 className="font-serif text-xl text-gray-900 mb-2 group-hover:text-gray-600 transition-colors">
+                  <h3 className="font-serif text-base text-gray-900 mb-1 group-hover:text-gray-600 transition-colors">
                     {post.title}
                   </h3>
-                  <p className="font-serif text-gray-600 leading-relaxed text-sm">
+                  <p className="font-serif text-gray-600 leading-relaxed text-xs">
                     {post.excerpt}
                   </p>
                 </div>

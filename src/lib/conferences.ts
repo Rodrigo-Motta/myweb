@@ -50,6 +50,40 @@ export const conferenceAppearances: ConferenceAppearance[] = [
     description: 'Poster presentation on generative agents in dynamic market networks.',
     links: [],
   },
+  {
+    id: 4,
+    title: 'Characterizing Human Semantic Navigation in Concept Production as Trajectories in Embedding Space',
+    event: 'ICLR 2026',
+    location: 'Rio de Janeiro, Brazil',
+    year: '2026',
+    description:
+      'Poster presentation at the International Conference on Learning Representations (ICLR 2026). The work introduces a framework that represents concept production as navigation through embedding space, constructing participant-specific semantic trajectories to investigate how humans traverse meaning geometry.',
+    links: [
+      {
+        label: 'Paper',
+        href: 'https://doi.org/10.48550/arXiv.2602.05971',
+      },
+      {
+        label: 'ICLR Poster',
+        href: 'https://iclr.cc/virtual/2026/poster/10009590',
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: 'Talk — Characterizing Human Semantic Navigation',
+    event: 'Journée de la recherche 2026, Université de Montréal',
+    location: 'Montréal, Canada',
+    year: '2026',
+    description:
+      'Presented our ICLR paper with Jesuino Vieira at the Université de Montréal for the Journée de la recherche 2026, exchanging ideas on the intersection of cognitive science and AI. Also visited researchers at Mila — Quebec Artificial Intelligence Institute to discuss ongoing collaborations.',
+    links: [
+      {
+        label: 'Mila — Quebec AI Institute',
+        href: 'https://mila.quebec/',
+      },
+    ],
+  },
 ];
 
 // High-level list of presentations used on Conferences page and preview
@@ -60,6 +94,17 @@ export const conferencesPresentations: { label: string; href?: string }[] = [
   { label: 'Poster at Brain Modes 2024 (Bilbao, Spain)' },
   { label: 'Talk at Brain Modes 2025 (Toronto, Canada)', href: 'https://youtu.be/UfnNs7bVVfQ?list=PLArBKNfJxuum3IMjvqlr934_lD18mBX2j' },
   { label: 'Poster at Stanford Graph Learning Workshop 2025 (Palo Alto, US)' },
+  {
+    label: 'Poster at ICLR 2026 (Rio de Janeiro, Brazil)',
+    href: 'https://iclr.cc/virtual/2026/poster/10009590',
+  },
+  {
+    label: 'Talk at Journée de la recherche 2026 (Université de Montréal, Canada)',
+  },
+  {
+    label: 'Research visit at Mila — Quebec Artificial Intelligence Institute (2026)',
+    href: 'https://mila.quebec/',
+  },
 ];
 
 // Invited talks list used on Conferences page and preview

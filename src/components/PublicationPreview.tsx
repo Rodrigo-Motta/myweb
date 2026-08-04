@@ -17,7 +17,7 @@ const PublicationPreview = () => {
         'Characterizing Human Semantic Navigation in Concept Production as Trajectories in Embedding Space',
       authors:
         'Felipe D. Toro-Hernández, Jesuino Vieira Filho, Rodrigo M. Cabral-Carvalho',
-      journal: 'arXiv preprint arXiv:2602.05971 [cs.CL] (submitted Feb 2026) — accepted to ICLR 2026',
+      journal: 'International Conference on Learning Representations (ICLR), 2026',
       doi: 'https://doi.org/10.48550/arXiv.2602.05971',
     },
     {
@@ -41,23 +41,23 @@ const PublicationPreview = () => {
   ];
 
   return (
-    <section className="py-12 px-6 md:px-8 bg-gray-50">
+    <section className="py-8 px-6 md:px-8 bg-gray-50">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-serif text-3xl md:text-4xl text-gray-900 mb-8">
+        <h2 className="font-serif text-2xl md:text-3xl text-gray-900 mb-6">
           Selected Publications
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-2 mb-8">
+        <div className="grid gap-4 md:grid-cols-2 mb-6">
           {selectedPublications.map((publication) => (
             <article
               key={publication.id}
-              className="rounded-lg border border-gray-200 p-5 bg-white shadow-sm hover:shadow-md transition-shadow"
+              className="rounded-lg border border-gray-200 p-4 bg-white shadow-sm hover:shadow-md transition-shadow"
             >
-              <h3 className="font-serif text-lg text-gray-900 mb-2">
+              <h3 className="font-serif text-base text-gray-900 mb-1">
                 {publication.title}
               </h3>
-              <p className="font-serif text-gray-600 mb-2 text-sm" dangerouslySetInnerHTML={{ __html: publication.authors.replace(/Cabral-Carvalho/g, '<b style="color:#111">Cabral-Carvalho</b>') }} />
-              <p className="font-serif text-gray-500 mb-3 text-sm">{publication.journal}</p>
+              <p className="font-serif text-gray-600 mb-1 text-xs" dangerouslySetInnerHTML={{ __html: publication.authors.replace(/Cabral-Carvalho/g, '<b style="color:#111">Cabral-Carvalho</b>') }} />
+              <p className="font-serif text-gray-500 mb-2 text-xs">{publication.journal}</p>
               <a
                 href={publication.doi}
                 target="_blank"
