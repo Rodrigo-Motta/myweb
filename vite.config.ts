@@ -1,103 +1,42 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { blogUrls } from "./src/lib/blogUrls";
+import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 
-// Fetch OG images for blog URLs at build time (no server needed in prod).
-async function fetchOgImageAtBuild(url: string): Promise<string | null> {
-  const UA =
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
-  const attr = (tag: string, name: string) => {
-    const re = new RegExp(name + "\\s*=\\s*([\"\'])(.*?)\\1", "i");
-    const m = tag.match(re);
-    return m ? m[2] : undefined;
-  };
-  try {
-    const r = await fetch(url, {
-      redirect: "follow",
-      headers: { "User-Agent": UA, Accept: "text/html,application/xhtml+xml" },
-      signal: AbortSignal.timeout(10000),
-    });
-    const ctype = (r.headers.get("content-type") || "").toLowerCase();
-    if (/^image\//.test(ctype)) return url;
-    const html = await r.text();
-    const end = html.indexOf("</head>");
-    const head = end !== -1 ? html.slice(0, end + 7) : html.slice(0, 40000);
-    const metas = [...head.matchAll(/<meta\b[^>]*>/gi)].map((m) => m[0]);
-    const links = [...head.matchAll(/<link\b[^>]*>/gi)].map((m) => m[0]);
-    const getMeta = (names: string[]) => {
-      for (const tag of metas) {
-        const prop = attr(tag, "property") || attr(tag, "name");
-        const content = attr(tag, "content");
-        if (!prop || !content) continue;
-        if (names.includes(prop.toLowerCase())) return content.trim();
-      }
-      return undefined;
-    };
-    const getLink = (rels: string[]) => {
-      for (const tag of links) {
-        const rel = (attr(tag, "rel") || "").toLowerCase();
-        if (!rel) continue;
-        for (const r of rels) {
-          if (rel.split(/\s+/).includes(r)) {
-            const href = attr(tag, "href");
-            if (href) return href.trim();
-          }
-        }
-      }
-      return undefined;
-    };
-    const rawImg =
-      getMeta(["og:image:secure_url", "og:image:url", "og:image", "twitter:image"]) ||
-      getLink(["image_src"]);
-    if (rawImg) {
-      try { return new URL(rawImg, url).href; } catch { /* ignore */ }
-    }
-  } catch {
-    // fall through to microlink
-  }
-  // Microlink fallback (handles JS-rendered og:image)
-  try {
-    const mr = await fetch(
-      `https://api.microlink.io?url=${encodeURIComponent(url)}&fields=image.url`,
-      { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(10000) },
-    );
-    if (mr.ok) {
-      const md = await mr.json();
-      const img = md?.data?.image?.url;
-      if (typeof img === "string" && img) return img;
-    }
-  } catch {
-    // ignore
-  }
-  return null;
-}
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const MANIFEST_PATH = path.resolve(__dirname, "src/lib/og-thumbnails-manifest.json");
 
-// Virtual module that exposes pre-fetched OG images to the client bundle.
+// Virtual module that exposes pre-fetched (and downloaded-locally) OG
+// thumbnails to the client bundle. The actual fetching/downloading happens
+// in scripts/fetch-og-thumbnails.mjs (run as `prebuild`); this plugin just
+// reads the generated manifest so thumbnails are served from the same
+// origin (GitHub Pages) instead of slow cross-origin CDNs.
 function ogImagesPlugin() {
   const virtualId = "virtual:og-images";
   const resolvedId = `\0${virtualId}`;
-  let cache: Record<string, string | null> | null = null;
+  let command: string = "build";
   return {
     name: "og-images-virtual",
+    config(_config, cfg) {
+      command = cfg.command;
+    },
     resolveId(id: string) {
       if (id === virtualId) return resolvedId;
       return null;
     },
-    async load(id: string) {
+    load(id: string) {
       if (id !== resolvedId) return null;
-      if (!cache) {
-        console.log(`[og-images] Pre-fetching ${blogUrls.length} OG images...`);
-        cache = {};
-        // Fetch sequentially with a small delay to avoid rate limits.
-        for (const url of blogUrls) {
-          const img = await fetchOgImageAtBuild(url);
-          cache[url] = img;
-          console.log(`[og-images] ${img ? "ok" : "miss"} <- ${url.slice(0, 60)}`);
-          await new Promise((r) => setTimeout(r, 250));
-        }
+      // In dev, there's no manifest (it's gitignored/generated at build).
+      // Return an empty map so the client falls back to the live
+      // /api/link-preview middleware.
+      if (command !== "build") return `export default {};`;
+      if (!fs.existsSync(MANIFEST_PATH)) {
+        console.warn("[og-images] Manifest not found — run `npm run prebuild`. Returning empty map.");
+        return `export default {};`;
       }
-      return `export default ${JSON.stringify(cache)};`;
+      const json = fs.readFileSync(MANIFEST_PATH, "utf8");
+      return `export default ${json};`;
     },
   };
 }

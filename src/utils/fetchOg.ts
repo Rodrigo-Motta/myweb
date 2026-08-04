@@ -1,4 +1,5 @@
 import bakedOgImages from 'virtual:og-images';
+import { withBasePath } from '@/utils/assetPath';
 
 function attr(tag: string, name: string) {
   const re = new RegExp(name + "\\s*=\\s*([\"\'])(.*?)\\1", "i");
@@ -53,7 +54,13 @@ export async function fetchOgImage(url: string): Promise<string | null> {
     // in static deploys (GitHub Pages) where there's no server-side preview
     // API and browser-side fetches would be rate-limited.
     const baked = bakedOgImages[url];
-    if (typeof baked === 'string' && baked) return baked;
+    if (typeof baked === 'string' && baked) {
+      // Locally downloaded thumbnails (e.g. "og/<hash>.webp") are served
+      // from the same origin; resolve them through the configured base path.
+      // Remote fallback URLs (http...) are returned as-is.
+      if (baked.startsWith('http')) return baked;
+      return withBasePath(baked);
+    }
     if (baked === null) return null; // known miss at build time
 
     const rawBase = (import.meta as any)?.env?.VITE_PREVIEW_API_BASE as string | undefined;
