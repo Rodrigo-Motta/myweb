@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Generated OG thumbnails + manifest (created by prebuild)
+public/og/
+src/lib/og-thumbnails-manifest.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
