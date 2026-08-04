@@ -1,6 +1,106 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { blogUrls } from "./src/lib/blogUrls";
+
+// Fetch OG images for blog URLs at build time (no server needed in prod).
+async function fetchOgImageAtBuild(url: string): Promise<string | null> {
+  const UA =
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+  const attr = (tag: string, name: string) => {
+    const re = new RegExp(name + "\\s*=\\s*([\"\'])(.*?)\\1", "i");
+    const m = tag.match(re);
+    return m ? m[2] : undefined;
+  };
+  try {
+    const r = await fetch(url, {
+      redirect: "follow",
+      headers: { "User-Agent": UA, Accept: "text/html,application/xhtml+xml" },
+      signal: AbortSignal.timeout(10000),
+    });
+    const ctype = (r.headers.get("content-type") || "").toLowerCase();
+    if (/^image\//.test(ctype)) return url;
+    const html = await r.text();
+    const end = html.indexOf("</head>");
+    const head = end !== -1 ? html.slice(0, end + 7) : html.slice(0, 40000);
+    const metas = [...head.matchAll(/<meta\b[^>]*>/gi)].map((m) => m[0]);
+    const links = [...head.matchAll(/<link\b[^>]*>/gi)].map((m) => m[0]);
+    const getMeta = (names: string[]) => {
+      for (const tag of metas) {
+        const prop = attr(tag, "property") || attr(tag, "name");
+        const content = attr(tag, "content");
+        if (!prop || !content) continue;
+        if (names.includes(prop.toLowerCase())) return content.trim();
+      }
+      return undefined;
+    };
+    const getLink = (rels: string[]) => {
+      for (const tag of links) {
+        const rel = (attr(tag, "rel") || "").toLowerCase();
+        if (!rel) continue;
+        for (const r of rels) {
+          if (rel.split(/\s+/).includes(r)) {
+            const href = attr(tag, "href");
+            if (href) return href.trim();
+          }
+        }
+      }
+      return undefined;
+    };
+    const rawImg =
+      getMeta(["og:image:secure_url", "og:image:url", "og:image", "twitter:image"]) ||
+      getLink(["image_src"]);
+    if (rawImg) {
+      try { return new URL(rawImg, url).href; } catch { /* ignore */ }
+    }
+  } catch {
+    // fall through to microlink
+  }
+  // Microlink fallback (handles JS-rendered og:image)
+  try {
+    const mr = await fetch(
+      `https://api.microlink.io?url=${encodeURIComponent(url)}&fields=image.url`,
+      { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(10000) },
+    );
+    if (mr.ok) {
+      const md = await mr.json();
+      const img = md?.data?.image?.url;
+      if (typeof img === "string" && img) return img;
+    }
+  } catch {
+    // ignore
+  }
+  return null;
+}
+
+// Virtual module that exposes pre-fetched OG images to the client bundle.
+function ogImagesPlugin() {
+  const virtualId = "virtual:og-images";
+  const resolvedId = `\0${virtualId}`;
+  let cache: Record<string, string | null> | null = null;
+  return {
+    name: "og-images-virtual",
+    resolveId(id: string) {
+      if (id === virtualId) return resolvedId;
+      return null;
+    },
+    async load(id: string) {
+      if (id !== resolvedId) return null;
+      if (!cache) {
+        console.log(`[og-images] Pre-fetching ${blogUrls.length} OG images...`);
+        cache = {};
+        // Fetch sequentially with a small delay to avoid rate limits.
+        for (const url of blogUrls) {
+          const img = await fetchOgImageAtBuild(url);
+          cache[url] = img;
+          console.log(`[og-images] ${img ? "ok" : "miss"} <- ${url.slice(0, 60)}`);
+          await new Promise((r) => setTimeout(r, 250));
+        }
+      }
+      return `export default ${JSON.stringify(cache)};`;
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -135,6 +235,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
+      ogImagesPlugin(),
       // Exposes /api/link-preview in dev only
       ...(isDev ? [linkPreviewPlugin()] : []),
     ],
