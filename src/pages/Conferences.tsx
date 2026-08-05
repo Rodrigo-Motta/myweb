@@ -27,28 +27,54 @@ const Conferences = () => {
           {/* Overview cards: Presentations, Invited Talks, Awards */}
           <section className="grid gap-4 md:grid-cols-3 mb-12">
             {/* Presentations */}
-            <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+            <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:col-span-2">
               <h2 className="font-serif text-lg text-gray-900 mb-3 pb-2 border-b border-gray-100">
                 Presentations
               </h2>
-              <ul className="space-y-2 text-xs text-gray-600">
-                {conferencesPresentations.map((item) => (
-                  <li key={item.label} className="leading-relaxed">
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
-                      >
-                        {item.label}
-                      </a>
-                    ) : (
-                      item.label
-                    )}
-                  </li>
+              <div className="divide-y divide-gray-100">
+                {conferencesPresentations.map((item, idx) => (
+                  <div
+                    key={`${item.venue}-${item.year}-${idx}`}
+                    className="flex items-start gap-3 py-2"
+                  >
+                    <span
+                      className={`flex-shrink-0 mt-0.5 px-2 py-0.5 rounded-full text-[10px] font-medium whitespace-nowrap ${
+                        item.type === 'Talk'
+                          ? 'bg-blue-100 text-blue-700'
+                          : item.type === 'Poster'
+                            ? 'bg-gray-100 text-gray-700'
+                            : item.type === 'Oral presentation'
+                              ? 'bg-green-100 text-green-700'
+                              : item.type === 'Research visit'
+                                ? 'bg-purple-100 text-purple-700'
+                                : 'bg-amber-100 text-amber-700'
+                      }`}
+                    >
+                      {item.type}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-serif text-xs text-gray-900 hover:text-blue-600 transition-colors"
+                        >
+                          {item.venue}
+                        </a>
+                      ) : (
+                        <span className="font-serif text-xs text-gray-900">{item.venue}</span>
+                      )}
+                      <div className="font-serif text-[11px] text-gray-500">
+                        {item.location}
+                      </div>
+                    </div>
+                    <span className="flex-shrink-0 font-serif text-[11px] text-gray-400 mt-0.5">
+                      {item.year}
+                    </span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
             {/* Invited Talks */}
@@ -84,7 +110,7 @@ const Conferences = () => {
             </div>
 
             {/* Awards */}
-            <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+            <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:col-span-2 lg:col-span-1">
               <h2 className="font-serif text-lg text-gray-900 mb-3 pb-2 border-b border-gray-100">
                 Awards
               </h2>

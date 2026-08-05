@@ -1,23 +1,23 @@
 import { Link } from 'react-router-dom';
-import { conferenceAppearances, conferencesPresentations, conferencesInvitedTalks } from '../lib/conferences';
+import { conferenceAppearances } from '../lib/conferences';
 
 const ConferencesPreview = () => {
   return (
     <section className="py-8 px-6 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <h2 className="font-serif text-2xl md:text-3xl text-gray-900 mb-6">
+        <h2 className="font-serif text-2xl md:text-3xl text-gray-900 mb-5">
           Conferences & Talks
         </h2>
 
-        <div className="grid gap-4 md:grid-cols-2 mb-6">
+        <div className="grid gap-3 md:grid-cols-2 mb-5">
           {conferenceAppearances.map((appearance) => (
             <article
               key={appearance.id}
-              className="rounded-lg border border-gray-200 p-4 shadow-sm hover:shadow-md transition-shadow"
+              className="rounded-lg border border-gray-200 p-3 shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="flex flex-col gap-1 mb-2">
+              <div className="flex flex-col gap-0.5 mb-1.5">
                 <div>
-                  <h3 className="font-serif text-base text-gray-900">
+                  <h3 className="font-serif text-sm text-gray-900 leading-snug">
                     {appearance.title}
                   </h3>
                   <p className="font-serif text-gray-600 text-xs">
@@ -29,7 +29,7 @@ const ConferencesPreview = () => {
                 </div>
               </div>
 
-              <p className="font-serif text-gray-600 leading-relaxed mb-2 text-xs">
+              <p className="font-serif text-gray-600 leading-relaxed mb-1.5 text-xs line-clamp-2">
                 {appearance.description}
               </p>
 
@@ -41,7 +41,7 @@ const ConferencesPreview = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-serif text-sm text-blue-600 underline"
+                      className="font-serif text-xs text-blue-600 underline"
                     >
                       {link.label}
                     </a>
@@ -50,50 +50,6 @@ const ConferencesPreview = () => {
               )}
             </article>
           ))}
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 mb-6">
-          <div>
-            <h3 className="font-serif text-lg text-gray-900 mb-2">Presentations</h3>
-            <ul className="space-y-1.5 text-xs text-gray-600 list-disc pl-5">
-              {conferencesPresentations.map((item) => (
-                <li key={item.label}>
-                  {item.href ? (
-                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">
-                      {item.label}
-                    </a>
-                  ) : (
-                    item.label
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-serif text-lg text-gray-900 mb-2">Invited Talks (on site)</h3>
-            <ul className="space-y-1.5 text-xs text-gray-600 list-disc pl-5">
-              {conferencesInvitedTalks.map((talk) => (
-                <li key={talk.text ?? talk.prefix ?? talk.linkLabel}>
-                  {talk.text ? (
-                    talk.text
-                  ) : (
-                    <span>
-                      {talk.prefix}
-                      <a
-                        href={talk.linkHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
-                      >
-                        {talk.linkLabel}
-                      </a>
-                      {talk.suffix}
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         <Link

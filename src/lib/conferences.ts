@@ -71,7 +71,7 @@ export const conferenceAppearances: ConferenceAppearance[] = [
   },
   {
     id: 5,
-    title: 'Talk — Characterizing Human Semantic Navigation',
+    title: 'Poster — Characterizing Human Semantic Navigation',
     event: 'Journée de la recherche 2026, Université de Montréal',
     location: 'Montréal, Canada',
     year: '2026',
@@ -86,26 +86,88 @@ export const conferenceAppearances: ConferenceAppearance[] = [
   },
 ];
 
-// High-level list of presentations used on Conferences page and preview
-// Each item may optionally include an href to link to a recording or resource
-export const conferencesPresentations: { label: string; href?: string }[] = [
-  { label: 'Oral presentation at 10th BRAINN Congress (Campinas 2024, UNICAMP, Brazil)' },
-  { label: 'Poster at OHBM 2024 (Seoul, South Korea)' },
-  { label: 'Poster at Brain Modes 2024 (Bilbao, Spain)' },
-  { label: 'Talk at Brain Modes 2025 (Toronto, Canada)', href: 'https://youtu.be/UfnNs7bVVfQ?list=PLArBKNfJxuum3IMjvqlr934_lD18mBX2j' },
-  { label: 'Poster at Stanford Graph Learning Workshop 2025 (Palo Alto, US)' },
+// Structured presentations used on the Conferences page. Rendered as a
+// compact table with type badges (Poster / Talk / Oral / Research visit)
+// and a year column, so the list is scannable instead of long text lines.
+export type Presentation = {
+  type: 'Poster' | 'Talk' | 'Oral presentation' | 'Publication and Poster' | 'Research visit';
+  venue: string;
+  location: string;
+  year: string;
+  href?: string;
+};
+
+export const conferencesPresentations: Presentation[] = [
   {
-    label: 'Poster at ICLR 2026 (Rio de Janeiro, Brazil)',
+    type: 'Publication and Poster',
+    venue: 'ICLR 2026',
+    location: 'Rio de Janeiro, Brazil',
+    year: '2026',
     href: 'https://iclr.cc/virtual/2026/poster/10009590',
   },
   {
-    label: 'Talk at Journée de la recherche 2026 (Université de Montréal, Canada)',
+    type: 'Poster',
+    venue: 'Stanford Graph Learning Workshop — AgentMarket',
+    location: 'Palo Alto, USA',
+    year: '2025',
   },
   {
-    label: 'Research visit at Mila — Quebec Artificial Intelligence Institute (2026)',
+    type: 'Talk',
+    venue: 'Brazilian Society of Neuroscience and Behaviour — Quantifying Subjective Experiences with LLMs',
+    location: 'São Paulo, Brazil',
+    year: '2025',
+  },
+  {
+    type: 'Talk',
+    venue: 'Brain Modes 2025',
+    location: 'Toronto, Canada',
+    year: '2025',
+    href: 'https://youtu.be/UfnNs7bVVfQ?list=PLArBKNfJxuum3IMjvqlr934_lD18mBX2j',
+  },
+  {
+    type: 'Poster',
+    venue: 'Brain Modes 2024',
+    location: 'Bilbao, Spain',
+    year: '2024',
+  },
+  {
+    type: 'Poster',
+    venue: 'Organization for Human Brain Mapping (OHBM) 2024',
+    location: 'Seoul, South Korea',
+    year: '2024',
+  },
+  {
+    type: 'Oral presentation',
+    venue: '10th BRAINN Congress',
+    location: 'UNICAMP, Brazil',
+    year: '2024',
+  },
+  {
+    type: 'Poster',
+    venue: 'Journée de la recherche 2026',
+    location: 'Université de Montréal, Canada',
+    year: '2026',
+  },
+  {
+    type: 'Research visit',
+    venue: 'Mila — Quebec Artificial Intelligence Institute',
+    location: 'Montréal, Canada',
+    year: '2026',
     href: 'https://mila.quebec/',
   },
 ];
+
+// Uniqueness guard: throws if any presentation entries are duplicated (by
+// venue + year) so accidental repeats surface immediately in dev/build
+// instead of rendering with duplicate React keys.
+const _dup = conferencesPresentations
+  .map((p) => `${p.venue} · ${p.year}`)
+  .filter((key, i, arr) => arr.indexOf(key) !== i);
+if (_dup.length > 0) {
+  throw new Error(
+    `Duplicate conferencesPresentations entries found:\n${_dup.map((d) => `  - ${d}`).join('\n')}`,
+  );
+}
 
 // Invited talks list used on Conferences page and preview
 export type InvitedTalk = {
