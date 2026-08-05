@@ -7,11 +7,47 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const OUT_DIR = path.join(ROOT, 'public', 'og');
 const MANIFEST = path.join(ROOT, 'src', 'lib', 'og-thumbnails-manifest.json');
+
+// Target aspect ratio for normalized thumbnails (3:2 landscape).
+const TARGET_W = 1200;
+const TARGET_H = 800;
+
+// Resize + center-crop an image to a fixed aspect ratio so every thumbnail
+// shares identical dimensions and the card grid has no blank-space gaps.
+// Tries ImageMagick `convert` (preinstalled on GitHub Actions Ubuntu runners)
+// first, then falls back to Pillow via python3 (works locally on macOS).
+function normalizeImage(filePath) {
+  // Try ImageMagick `convert` (works on Linux CI runners).
+  try {
+    execFileSync('convert', [
+      filePath,
+      '-resize', `${TARGET_W}x${TARGET_H}^`,
+      '-gravity', 'center',
+      '-extent', `${TARGET_W}x${TARGET_H}`,
+      filePath,
+    ], { stdio: 'ignore' });
+    return;
+  } catch { /* fall through to Pillow */ }
+  // Pillow fallback (works locally on macOS).
+  const script = `
+from PIL import Image
+img = Image.open(${JSON.stringify(filePath)})
+img = img.convert('RGB')
+scale = max(${TARGET_W}/img.width, ${TARGET_H}/img.height)
+img = img.resize((round(img.width*scale), round(img.height*scale)))
+left = (img.width-${TARGET_W})//2
+top = (img.height-${TARGET_H})//2
+img = img.crop((left, top, left+${TARGET_W}, top+${TARGET_H}))
+img.save(${JSON.stringify(filePath)}, 'JPEG', quality=86, optimize=True)
+`;
+  execFileSync('python3', ['-c', script], { stdio: 'ignore' });
+}
 
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
@@ -88,10 +124,17 @@ async function downloadImage(imgUrl) {
   });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   const buf = Buffer.from(await r.arrayBuffer());
-  const ext = extFromType(r.headers.get('content-type')) || path.extname(new URL(imgUrl).pathname).slice(0, 5) || '.img';
   const hash = crypto.createHash('sha1').update(imgUrl).digest('hex').slice(0, 16);
-  const name = `${hash}${ext}`;
-  fs.writeFileSync(path.join(OUT_DIR, name), buf);
+  // Normalize to JPEG at a fixed 3:2 aspect ratio so all thumbnails share
+  // identical dimensions and the card grid has no blank-space gaps.
+  const name = `${hash}.jpg`;
+  const outPath = path.join(OUT_DIR, name);
+  fs.writeFileSync(outPath, buf);
+  try {
+    normalizeImage(outPath);
+  } catch (e) {
+    console.log(`[og-thumbnails] normalize-fail <- ${imgUrl.slice(0, 60)} (${e.message})`);
+  }
   return `og/${name}`;
 }
 

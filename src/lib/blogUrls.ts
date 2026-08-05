@@ -2,6 +2,7 @@
 // Keep in sync with the posts defined in src/pages/Blog.tsx and
 // src/components/BlogPreview.tsx.
 export const blogUrls: string[] = [
+  'https://medium.com/@rodrigodamottacc/mapping-a-research-landscape-with-semantic-embeddings-7e13c44ce1e8',
   'https://www.cloudwalk.io/newsroom/brazilian-ai-researcher-from-cloudwalk-unveils-multi-agent-marketplace-simulation-at-stanford-pioneering-the-future-of-autonomous-digital-commerce',
   'https://www.cloudwalk.io/ai/rag-tool-calling-and-the-fight-against-hallucinations',
   'https://www.cloudwalk.io/ai/first-token-bias-transformers-as-graphs',

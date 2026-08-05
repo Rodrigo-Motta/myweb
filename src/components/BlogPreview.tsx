@@ -38,14 +38,14 @@ const BlogPreview = () => {
       ),
     },
         {
-      id: 14,
-      title: 'RAG, TOOL-CALLING, AND THE FIGHT AGAINST HALLUCINATIONS',
+      id: 12,
+      title: 'Neural Networks via Information',
       excerpt:
-        'This article serves as a survey and futuristic perspective on trustworthy AI anchored on knowledge retrieval',
-      date: '2025-11-06',
-      url: 'https://www.cloudwalk.io/ai/rag-tool-calling-and-the-fight-against-hallucinations',
+        'A way to better understand learning with deep neural networks through the lens of information theory.',
+      date: '2022-12-13',
+      url: 'https://medium.com/data-science/neural-network-via-information-68af7f49b978',
       ...buildThumbnail(
-        'https://www.cloudwalk.io/ai/rag-tool-calling-and-the-fight-against-hallucinations',
+        'https://medium.com/data-science/neural-network-via-information-68af7f49b978',
       ),
     },
     {
@@ -74,15 +74,15 @@ const BlogPreview = () => {
       ),
     },
     {
-      id: 3,
-      title: 'Simulating Vibrations: The Advanced Physics Behind Drums and Speakers',
+      id: 5,
+      title: 'How I Organized a One-week University Course on Deep Learning',
       excerpt:
-        'Exploring the 2D Wave Equation through simulations and by hearing them.',
-      date: '2024-06-05',
+        'A hot topic in data science is how to teach it; this article details my experience organizing a 20-hour deep learning course at USP.',
+      date: '2024-03-08',
       url:
-        'https://medium.com/@rodrigodamottacc/simulating-vibrations-the-advanced-physics-behind-drums-and-speakers-b350f6fb1362',
+        'https://medium.com/towards-artificial-intelligence/how-i-organized-a-one-week-university-course-on-deep-learning-3bf99432f31c',
       ...buildThumbnail(
-        'https://medium.com/@rodrigodamottacc/simulating-vibrations-the-advanced-physics-behind-drums-and-speakers-b350f6fb1362',
+        'https://medium.com/towards-artificial-intelligence/how-i-organized-a-one-week-university-course-on-deep-learning-3bf99432f31c',
       ),
     },
     {
@@ -133,8 +133,8 @@ const BlogPreview = () => {
               key={post.id}
               className="rounded-lg border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden"
             >
-              <a href={post.url} target="_blank" rel="noopener noreferrer" className="block group">
-                <div className="aspect-[4/3] overflow-hidden">
+              <a href={post.url} target="_blank" rel="noopener noreferrer" className="flex group">
+                <div className="w-40 sm:w-44 flex-shrink-0 aspect-[3/2] overflow-hidden bg-gray-100">
                   <img
                     src={ogMap[post.url] || post.primary}
                     alt={`Thumbnail for ${post.title}`}
@@ -152,18 +152,18 @@ const BlogPreview = () => {
                     }}
                   />
                 </div>
-                <div className="p-4">
-                  <time className="font-serif text-xs text-gray-500 mb-1 block uppercase tracking-wide">
+                <div className="p-3 flex-1">
+                  <time className="font-serif text-[11px] text-gray-500 mb-0.5 block uppercase tracking-wide">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
                     })}
                   </time>
-                  <h3 className="font-serif text-base text-gray-900 mb-1 group-hover:text-gray-600 transition-colors">
+                  <h3 className="font-serif text-sm text-gray-900 leading-snug mb-1 group-hover:text-gray-600 transition-colors">
                     {post.title}
                   </h3>
-                  <p className="font-serif text-gray-600 leading-relaxed text-xs">
+                  <p className="font-serif text-gray-600 leading-relaxed text-xs line-clamp-2">
                     {post.excerpt}
                   </p>
                 </div>

@@ -28,6 +28,17 @@ const Blog = () => {
   const [ogMap, setOgMap] = useState<Record<string, string | null>>({});
   const rawPosts = [
         {
+      id: 16,
+      title: 'From My Dissertation to a Research Map using Semantic Embeddings',
+      excerpt:
+        'After completing my dissertation, I couldn\'t shake the idea of visualizing it within a research landscape — an interdisciplinary map spanning AI research, Neuroscience, Psychedelic Science, and Complex Systems using semantic embeddings.',
+      date: '2025-07-08',
+      readTime: '7 min read',
+      tags: ['AI', 'Embeddings', 'Complex Systems', 'Research'],
+      url: 'https://medium.com/@rodrigodamottacc/mapping-a-research-landscape-with-semantic-embeddings-7e13c44ce1e8',
+      featured: false,
+    },
+        {
       id: 15,
       title:
         'Brazilian AI Researcher From CloudWalk Unveils Multi-Agent Marketplace Simulation at Stanford',
@@ -212,10 +223,12 @@ const Blog = () => {
     },
   ];
 
-  const posts = rawPosts.map((post) => ({
-    ...post,
-    ...buildThumbnail(post.url),
-  }));
+  const posts = rawPosts
+    .map((post) => ({
+      ...post,
+      ...buildThumbnail(post.url),
+    }))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const featuredPost = posts.find(post => post.featured);
   const regularPosts = posts.filter(post => !post.featured);
@@ -261,9 +274,9 @@ const Blog = () => {
 
           {/* Featured Post */}
           {featuredPost && (
-            <div className="mb-4">
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-1 md:p-2">
-                <div className="flex items-center mb-1">
+            <div className="mb-6">
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-1 md:p-1.5">
+                <div className="flex items-center mb-1 px-2 pt-1">
                   <span className="bg-blue-600 text-white px-2 py-0.5 rounded-full text-[10px] font-medium">
                     Featured
                   </span>
@@ -273,9 +286,9 @@ const Blog = () => {
                   href={featuredPost.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block group"
+                  className="flex group p-2 gap-3"
                 >
-                  <div className="overflow-hidden rounded-md mb-2 aspect-[16/6] md:aspect-[16/6]">
+                  <div className="w-32 sm:w-40 md:w-48 flex-shrink-0 aspect-[3/2] overflow-hidden rounded-md bg-gray-100">
                     <img
                       src={ogMap[featuredPost.url] || featuredPost.primary}
                       alt={`Thumbnail for ${featuredPost.title}`}
@@ -293,31 +306,33 @@ const Blog = () => {
                       }}
                     />
                   </div>
-                  <h2 className="text-base md:text-lg font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
-                    {featuredPost.title}
-                  </h2>
-                  <p className="text-sm text-gray-600 mb-2 leading-relaxed">
-                    {featuredPost.excerpt}
-                  </p>
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-sm md:text-base font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors leading-snug">
+                      {featuredPost.title}
+                    </h2>
+                    <p className="text-xs text-gray-600 mb-2 leading-relaxed line-clamp-2">
+                      {featuredPost.excerpt}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-500 mb-2">
+                      <time>
+                        {new Date(featuredPost.date).toLocaleDateString('en-US', { 
+                          year: 'numeric', 
+                          month: 'long', 
+                          day: 'numeric' 
+                        })}
+                      </time>
+                      <span>•</span>
+                      <span>{featuredPost.readTime}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {featuredPost.tags.map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 bg-white text-gray-700 text-[10px] rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </a>
-                <div className="flex flex-wrap items-center gap-2 text-[11px] text-gray-500 mb-2">
-                  <time>
-                    {new Date(featuredPost.date).toLocaleDateString('en-US', { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}
-                  </time>
-                  <span>•</span>
-                  <span>{featuredPost.readTime}</span>
-                </div>
-                <div className="flex flex-wrap gap-1">
-                  {featuredPost.tags.map((tag) => (
-                    <span key={tag} className="px-2 py-0.5 bg-white text-gray-700 text-[10px] rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           )}
@@ -331,7 +346,7 @@ const Blog = () => {
                     href={post.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block md:w-44 overflow-hidden rounded-xl flex-shrink-0"
+                    className="block md:w-44 aspect-[3/2] overflow-hidden rounded-xl flex-shrink-0"
                   >
                     <img
                       src={ogMap[post.url] || post.primary}
