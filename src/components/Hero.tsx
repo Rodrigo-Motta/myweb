@@ -72,9 +72,9 @@ const Hero = () => {
           <div>
             <div className="space-y-3 font-serif text-gray-600 leading-relaxed">
               <p>
-                I'm currently doing work on representation learning of clients for financial foundation models and post-training for downstream tasks at CloudWalk. Moreover, I've been investigating collective behavior and complex systems is central to my work and research, spanning brain dynamics to AI agentic systems. One of my recent projects explores marketplaces as computational laboratories where agents act as merchants and the network structure is endogenous and time-varying (links form and dissolve as a consequence of interaction outcomes).
+                I've been working in the intersection of AI and complex systems, mainly neuroscience and finance, for fundamental research and product development. I have publications in ICLR, Network Neuroscience (MIT Press), NeuroInformatics (Springer) and others.
               </p>
-              <p>I deeply value diversity, collaboration, and respect.</p>
+              <p>I deeply value diversity, empathy, and respect.</p>
               <p>
                 And remember: creativity thrives when we occasionally increase our entropy!
               </p>
