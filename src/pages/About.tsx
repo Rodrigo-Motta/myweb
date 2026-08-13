@@ -7,9 +7,20 @@ const About = () => {
       <Navigation />
       <main className="pt-24 md:pt-28 pb-16 px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="font-serif font-semibold text-4xl md:text-5xl text-gray-900 mb-4">
-            About Me
-          </h1>
+          <div className="flex items-start justify-between gap-4 mb-6">
+            <h1 className="font-serif font-semibold text-4xl md:text-5xl text-gray-900">
+              About Me
+            </h1>
+            <a
+              href={withBasePath('CV_Rodrigo_academic_up-2.pdf')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-300 text-sm text-gray-700 hover:bg-gray-100 hover:border-gray-400 transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+              CV
+            </a>
+          </div>
           <div className="space-y-3 font-serif text-gray-600 leading-relaxed">
             <p>
               Welcome to my digital space where I share my work, thoughts, and creative journey.

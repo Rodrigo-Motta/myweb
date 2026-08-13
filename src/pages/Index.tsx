@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import ConferencesPreview from '../components/ConferencesPreview';
 import BlogPreview from '../components/BlogPreview';
 import PublicationPreview from '../components/PublicationPreview';
+import { withBasePath } from '../utils/assetPath';
 
 const Index = () => {
   return (
@@ -31,6 +32,9 @@ const Index = () => {
             </a>
             <a href="https://scholar.google.com/citations?user=jaaS6acAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
               Google Scholar
+            </a>
+            <a href={withBasePath('CV_Rodrigo_academic_up-2.pdf')} target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
+              CV
             </a>
           </div>
         </div>
