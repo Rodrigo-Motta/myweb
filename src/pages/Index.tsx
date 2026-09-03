@@ -33,7 +33,7 @@ const Index = () => {
             <a href="https://scholar.google.com/citations?user=jaaS6acAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
               Google Scholar
             </a>
-            <a href={withBasePath('CV_Rodrigo_academic_up-2.pdf')} target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
+            <a href={withBasePath('CV_Rodrigo_academic_up-web.pdf')} target="_blank" rel="noopener noreferrer" className="font-serif text-gray-500 hover:text-gray-900 transition-colors">
               CV
             </a>
           </div>

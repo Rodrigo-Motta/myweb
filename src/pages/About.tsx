@@ -12,7 +12,7 @@ const About = () => {
               About Me
             </h1>
             <a
-              href={withBasePath('CV_Rodrigo_academic_up-2.pdf')}
+              href={withBasePath('CV_Rodrigo_academic_up-web.pdf')}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-gray-300 text-sm text-gray-700 hover:bg-gray-100 hover:border-gray-400 transition-colors"
