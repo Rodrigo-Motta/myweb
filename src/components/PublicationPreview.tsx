@@ -16,7 +16,7 @@ const PublicationPreview = () => {
       title:
         'Characterizing Human Semantic Navigation in Concept Production as Trajectories in Embedding Space',
       authors:
-        'Felipe D. Toro-Hernández, Jesuino Vieira Filho, Rodrigo M. Cabral-Carvalho',
+        'Felipe D. Toro-Hernández*, Jesuino Vieira Filho*, Rodrigo M. Cabral-Carvalho* (equal contribution)',
       journal: 'International Conference on Learning Representations (ICLR), 2026',
       doi: 'https://doi.org/10.48550/arXiv.2602.05971',
     },
